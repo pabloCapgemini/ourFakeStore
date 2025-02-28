@@ -9,7 +9,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "testUX": "playwright test storeUX.spec.ts"
   },
   "keywords": [],
   "author": {
@@ -27,6 +28,8 @@
     "@electron-forge/plugin-fuses": "^7.7.0",
     "@electron-forge/plugin-webpack": "^7.7.0",
     "@electron/fuses": "^1.8.0",
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.5",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@vercel/webpack-asset-relocator-loader": "^1.7.3",

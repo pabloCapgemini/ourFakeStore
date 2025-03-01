@@ -10,7 +10,7 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx .",
-    "testUX": "playwright test storeUX.spec.ts"
+    "test": "playwright test storeUX.spec.ts"
   },
   "keywords": [],
   "author": {

@@ -32,7 +32,7 @@ console.log('👋 This message is being logged by "renderer.js", included via we
 import { getProducts } from "./fake-store-api-client";
 
 const app = document.createElement("div");
-app.innerHTML = `<h1>FakeStore Products</h1><ul id="product-list"></ul>`;
+app.innerHTML = `<h2>FakeStore Products</h2><ul id="product-list"></ul>`;
 document.body.appendChild(app);
 
 const productList = document.getElementById("product-list");

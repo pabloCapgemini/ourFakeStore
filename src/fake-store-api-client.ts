@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { Axios, AxiosResponse } from "axios";
 import { Product } from "./domain/Product";
 import { Cart } from "./domain/Cart";
 
@@ -8,6 +8,27 @@ const API_URL = "https://fakestoreapi.com";
 export class StoreAdapter {
   public getProducts(): Promise<AxiosResponse<any, any>> {
     return axios.get(`${API_URL}/products`);
+  }
+}
+export class EmptyStoreAdapter extends StoreAdapter {
+  public getProducts(): Promise<AxiosResponse<any, any>> {
+    
+    const emptyProduct:Product[] = [];
+    const response: AxiosResponse<any, any> = {
+      data: emptyProduct,
+      status: 200,
+      statusText: "OK",
+      headers: {},
+      config: {
+        headers: undefined
+      },
+    };
+    return Promise.resolve(response);
+  }
+}
+export class ErrorStoreAdapter extends StoreAdapter {
+  public getProducts(): Promise<AxiosResponse<any, any>> {
+    throw new Error("Failed to fetch products");
   }
 }
 

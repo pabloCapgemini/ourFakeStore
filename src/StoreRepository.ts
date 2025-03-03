@@ -8,7 +8,13 @@ export class StoreRepository {
         this.storeAdapter = storeAdapter;
     }
     async getProductsOrError(): Promise<Product[] | ApiError> {
-        return getProductsOrError();
+        try {
+            const response = await this.storeAdapter.getProducts();
+            return response.data;
+          } catch (error) {
+            console.error("Error fetching products:", error);
+            return new ApiError("Failed to fetch products");
+          }
     }
 }
 

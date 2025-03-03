@@ -19,3 +19,12 @@ export class EmptyStoreRepository extends StoreRepository {
         return this.getProducts();
     }
 }   
+
+export class ErrorStoreRepository extends StoreRepository {
+    async getProducts(): Promise<Product[]> {
+        throw new Error("Error fetching products");
+    }
+    async getProductsOrError(): Promise<Product[] | ApiError> {
+        return new ApiError("Failed to fetch products");
+    }
+}

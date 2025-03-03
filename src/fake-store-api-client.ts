@@ -5,15 +5,15 @@ import { Cart } from "./domain/Cart";
 const API_URL = "https://fakestoreapi.com";
 
 // Fetch all products
-export const getProducts = async (): Promise<Product[]> => {
-  try {
-    const response = await axios.get(`${API_URL}/products`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    return [];
-  }
-};
+// export const getProducts = async (): Promise<Product[]> => {
+//   try {
+//     const response = await axios.get(`${API_URL}/products`);
+//     return response.data;
+//   } catch (error) {
+//     console.error("Error fetching products:", error);
+//     return [];
+//   }
+// };
 
 export class ApiError extends Error {
   constructor(message: string) {
@@ -61,10 +61,10 @@ export const addToCart = async (userId: number, productId: number, quantity: num
 // Example usage
 (async () => {
   console.log("Fetching products...");
-  const products = await getProducts();
+  const products = await getProductsOrError();
   console.log(products);
 
-  if (products.length > 0) {
+  if (!(products instanceof ApiError) && products.length > 0) {
     console.log("Fetching product details for ID 1...");
     const product = await getProductById(1);
     console.log(product);

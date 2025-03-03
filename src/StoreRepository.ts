@@ -1,29 +1,21 @@
 import { Product } from './domain/Product';
-import { ApiError, getProducts, getProductsOrError } from './fake-store-api-client';
+import { ApiError, getProductsOrError } from './fake-store-api-client';
 
 
 export class StoreRepository {
-    async getProducts(): Promise<Product[]> {
-        return getProducts();
-    }
     async getProductsOrError(): Promise<Product[] | ApiError> {
         return getProductsOrError();
     }
 }
 
 export class EmptyStoreRepository extends StoreRepository {
-    async getProducts(): Promise<Product[]> {
-        return [];
-    }
     async getProductsOrError(): Promise<Product[] | ApiError> {
-        return this.getProducts();
+        return [];
     }
 }   
 
 export class ErrorStoreRepository extends StoreRepository {
-    async getProducts(): Promise<Product[]> {
-        throw new Error("Error fetching products");
-    }
+
     async getProductsOrError(): Promise<Product[] | ApiError> {
         return new ApiError("Failed to fetch products");
     }

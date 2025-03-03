@@ -1,22 +1,8 @@
 import axios from "axios";
+import { Product } from "./domain/Product";
+import { Cart } from "./domain/Cart";
 
 const API_URL = "https://fakestoreapi.com";
-
-// Define types for the API responses
-export interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-}
-
-export interface Cart {
-  userId: number;
-  date: string;
-  products: { productId: number; quantity: number }[];
-}
 
 // Fetch all products
 export const getProducts = async (): Promise<Product[]> => {
@@ -70,4 +56,8 @@ export const addToCart = async (userId: number, productId: number, quantity: num
   console.log("Adding product ID 1 to user ID 1's cart...");
   const cart = await addToCart(1, 1, 2);
   console.log(cart);
+
+  console.log('getting all Users...');
+  const users = await axios.get(`${API_URL}/users`);
+  console.log(users.data);
 })();

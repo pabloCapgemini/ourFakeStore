@@ -1,15 +1,27 @@
-import { _electron as electron, test, expect } from '@playwright/test';
+import { _electron as electron, test, expect, ElectronApplication, Page } from '@playwright/test';
 
+let app: ElectronApplication;
+let homePage: Page;
+
+test.beforeAll(async () => {
+    app = await electron.launch({ args: ['.webpack/arm64/main/'] });
+    homePage = await app.firstWindow();
+});
+test.afterAll(async () => {
+    await app.close();
+});
 test('should launch Electron app', async () => {
     const app = await electron.launch({ args: ['.webpack/arm64/main/'] });
 
-    const window = await app.firstWindow();
-    const title = await window.title();
+    const title = await homePage.title();
     expect(title).toBe('Fake Store');
 
-    // Take a screenshot for debugging
-    await window.screenshot({ path: 'test-results/app.png', fullPage: true });
+    await homePage.screenshot({ path: 'test-results/app.png', fullPage: true });
+});
+test('fake store displays products', async () => {
+    const listItems =   homePage.getByRole('listitem');
 
-    // Close the app
-    await app.close();
+    await expect(listItems).toHaveCount(20);
+    await expect(listItems).toContainText(['Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops']);
+    await expect(listItems).toContainText(['DANVOUY Womens T Shirt Casual Cotton Short']);
 });

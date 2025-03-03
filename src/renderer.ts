@@ -2,7 +2,6 @@
 import './index.css';
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
-import { getProducts } from "./fake-store-api-client";
 
 const app = document.createElement("div");
 app.innerHTML = `<h2>FakeStore Products</h2><ul id="product-list"></ul>`;

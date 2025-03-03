@@ -1,4 +1,5 @@
 import { _electron as electron, test, expect, ElectronApplication, Page } from '@playwright/test';
+import { ipcMain } from 'electron';
 
 let app: ElectronApplication;
 let homePage: Page;
@@ -19,11 +20,23 @@ test('should launch Electron app', async () => {
     await homePage.screenshot({ path: 'test-results/app.png', fullPage: true });
 });
 test('fake store displays products', async () => {
-    const listItems =   homePage.getByRole('listitem');
+    const listItems = homePage.getByRole('listitem');
 
     await expect(listItems).toHaveCount(20);
     await expect(listItems).toContainText(['Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops']);
     await expect(listItems).toContainText(['DANVOUY Womens T Shirt Casual Cotton Short']);
 
     await homePage.screenshot({ path: 'test-results/store-with-products.png', fullPage: true });
+});
+test('when products fail to load Store displays error message', async () => {
+    //here I need to tell app to fail to load products
+   
+    await app.evaluate(({ipcMain}) => {
+        ipcMain.emit('set-error-loading-products');
+    }
+    );
+    
+    const listItems = homePage.getByRole('listitem');
+    await expect(listItems).toHaveCount(1);
+    await expect(listItems).toContainText(['Failed to load products']);
 });

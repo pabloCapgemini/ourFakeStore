@@ -1,9 +1,15 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Product } from "./domain/Product";
 import { Cart } from "./domain/Cart";
 
 const API_URL = "https://fakestoreapi.com";
 
+
+export class StoreAdapter {
+  public getProducts(): Promise<AxiosResponse<any, any>> {
+    return axios.get(`${API_URL}/products`);
+  }
+}
 
 export class ApiError extends Error {
   constructor(message: string) {
@@ -12,9 +18,11 @@ export class ApiError extends Error {
   }
 }
 
+
 export const getProductsOrError = async (): Promise<Product[] | ApiError> => {
+  const adapter = new StoreAdapter();
   try {
-    const response = await axios.get(`${API_URL}/products`);
+    const response = await adapter.getProducts();
     return response.data;
   } catch (error) {
     console.error("Error fetching products:", error);

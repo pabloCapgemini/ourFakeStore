@@ -1,8 +1,12 @@
 import { Product } from './domain/Product';
-import { ApiError, getProductsOrError } from './fake-store-api-client';
+import { ApiError, getProductsOrError, StoreAdapter } from './fake-store-api-client';
 
 
 export class StoreRepository {
+    private storeAdapter: StoreAdapter;
+    constructor(storeAdapter:StoreAdapter) {
+        this.storeAdapter = storeAdapter;
+    }
     async getProductsOrError(): Promise<Product[] | ApiError> {
         return getProductsOrError();
     }

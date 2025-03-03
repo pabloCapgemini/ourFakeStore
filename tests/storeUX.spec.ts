@@ -12,8 +12,6 @@ test.afterEach(async () => {
     await app.close();
 });
 test('should launch Electron app', async () => {
-    const app = await electron.launch({ args: ['.webpack/arm64/main/'] });
-
     const title = await homePage.title();
     expect(title).toBe('Fake Store');
 

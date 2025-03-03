@@ -5,5 +5,6 @@ import { Product } from "./domain/Product";
 import { ApiError } from "./fake-store-api-client";
 
 contextBridge.exposeInMainWorld("storeAPI", {
-    fetchProducts: (): Promise<Product[]|ApiError> => ipcRenderer.invoke("fetch-products"),
+    fetchProducts: (): Promise<Product[] | ApiError> => ipcRenderer.invoke("fetch-products"),
+    loadProducts: (callback: (event: Electron.IpcRendererEvent, productsOrError: Product[] | ApiError) => void) => ipcRenderer.on("load-products", callback)
 });

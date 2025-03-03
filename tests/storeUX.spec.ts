@@ -33,6 +33,7 @@ test('when there are no products the Store displays special message', async () =
         ipcMain.emit('set-store-with-no-products');
     });
 
+    await homePage.screenshot({ path: 'test-results/store-with-NoProducts.png', fullPage: true });
     const listItems = homePage.getByRole('listitem');
     await expect(listItems).toHaveCount(1);
     await expect(listItems).toContainText(['No products available. Please come back soon!']);
@@ -42,6 +43,7 @@ test('when there is an error fetching products the Store will display a nice err
         ipcMain.emit('set-store-with-error');
     });
 
+    await homePage.screenshot({ path: 'test-results/store-with-Error.png', fullPage: true });
     const listItems = homePage.getByRole('listitem');
     await expect(listItems).toHaveCount(1);
     await expect(listItems).toContainText(['Failed to fetch products']);

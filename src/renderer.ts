@@ -1,4 +1,5 @@
 
+import { eventNames } from 'process';
 import { Product } from './domain/Product';
 import './index.css';
 
@@ -28,5 +29,21 @@ const loadProducts = async () => {
 
 };
 
-loadProducts();
+window.storeAPI.loadProducts((event, productsOrError) => {
+  console.log(`loading products: ${productsOrError}`);
+  if (productsOrError instanceof Error) {
+    productList!.innerHTML = "<li>Failed to fetch products</li>";
+    return;
+  } else {
+    const products = productsOrError as Product[];
+    if (products.length > 0) {
+      productList!.innerHTML = products
+        .map((product) => `<li>${product.title} - $${product.price}</li>`)
+        .join("");
+    } else {
+      productList!.innerHTML = "<li>No products available. Please come back soon!</li>";
+    }
+  }
+});
+// loadProducts();
 

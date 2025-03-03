@@ -11,9 +11,10 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-const createWindow = (): void => {
+let storeWindow: BrowserWindow;
+const createWindow = async (): Promise<void> => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  storeWindow = new BrowserWindow({
     height: 600,
     width: 800,
     webPreferences: {
@@ -22,8 +23,9 @@ const createWindow = (): void => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  storeWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
+  await initializeStore();
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 };
@@ -53,16 +55,23 @@ app.on('activate', () => {
 
 let storeRepo = new StoreRepository();
 
+async function initializeStore() {
+  const productsOrError = await storeRepo.getProductsOrError();
+  storeWindow.webContents.send('load-products', productsOrError);
+}
+
 ipcMain.handle("fetch-products", async () => {
   const products = await storeRepo.getProductsOrError();
   console.log('products: ' + products);
   return products;
 });
 
-ipcMain.on("set-store-with-no-products", () => {
+ipcMain.on("set-store-with-no-products", async () => {
   storeRepo = new EmptyStoreRepository();
+  await initializeStore();
 });
 
-ipcMain.on("set-store-with-error", () => {
+ipcMain.on("set-store-with-error", async () => {
   storeRepo = new ErrorStoreRepository();
+  await initializeStore();
 });

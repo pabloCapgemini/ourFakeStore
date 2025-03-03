@@ -15,6 +15,20 @@ export const getProducts = async (): Promise<Product[]> => {
   }
 };
 
+export class ApiError extends Error {
+  message: string;
+}
+
+export const getProductsOrError = async (): Promise<Product[] | ApiError> => {
+  try {
+    const response = await axios.get(`${API_URL}/products`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return new ApiError("Failed to fetch products");
+  }
+}
+
 // Fetch a single product by ID
 export const getProductById = async (id: number): Promise<Product | null> => {
   try {

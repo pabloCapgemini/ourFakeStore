@@ -54,7 +54,7 @@ app.on('activate', () => {
 let storeRepo = new StoreRepository();
 
 ipcMain.handle("fetch-products", async () => {
-  const products = await storeRepo.getProducts();
+  const products = await storeRepo.getProductsOrError();
   console.log('products: ' + products);
   return products;
 });

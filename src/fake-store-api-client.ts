@@ -16,7 +16,10 @@ export const getProducts = async (): Promise<Product[]> => {
 };
 
 export class ApiError extends Error {
-  message: string;
+  constructor(message: string) {
+    super(message);
+    this.name = "ApiError";
+  }
 }
 
 export const getProductsOrError = async (): Promise<Product[] | ApiError> => {

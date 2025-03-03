@@ -4,11 +4,11 @@ import { ipcMain } from 'electron';
 let app: ElectronApplication;
 let homePage: Page;
 
-test.beforeAll(async () => {
+test.beforeEach(async () => {
     app = await electron.launch({ args: ['.webpack/arm64/main/'] });
     homePage = await app.firstWindow();
 });
-test.afterAll(async () => {
+test.afterEach(async () => {
     await app.close();
 });
 test('should launch Electron app', async () => {

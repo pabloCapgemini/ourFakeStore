@@ -4,16 +4,6 @@ import { Cart } from "./domain/Cart";
 
 const API_URL = "https://fakestoreapi.com";
 
-// Fetch all products
-// export const getProducts = async (): Promise<Product[]> => {
-//   try {
-//     const response = await axios.get(`${API_URL}/products`);
-//     return response.data;
-//   } catch (error) {
-//     console.error("Error fetching products:", error);
-//     return [];
-//   }
-// };
 
 export class ApiError extends Error {
   constructor(message: string) {

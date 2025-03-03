@@ -24,4 +24,6 @@ test('fake store displays products', async () => {
     await expect(listItems).toHaveCount(20);
     await expect(listItems).toContainText(['Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops']);
     await expect(listItems).toContainText(['DANVOUY Womens T Shirt Casual Cotton Short']);
+
+    await homePage.screenshot({ path: 'test-results/store-with-products.png', fullPage: true });
 });

@@ -5,10 +5,28 @@ import { Cart } from "./domain/Cart";
 const API_URL = "https://fakestoreapi.com";
 
 export class ApiError extends Error {
-  constructor(message: string, public status: number) {
-    super(message);
+}
+export class EmptyStoreAdapter {
+  async getProducts(): Promise<AxiosResponse<any, any>> {
+    const emptyProduct: Product[] = [];
+    const response: AxiosResponse<any, any> = {
+      data: emptyProduct,
+      status: 200,
+      statusText: "OK",
+      headers: {},
+      config: {
+        headers: undefined
+      },
+    };
+    return Promise.resolve(response);
   }
 }
+export class ErrorStoreAdapter {
+  async getProducts(): Promise<AxiosResponse<any, any>> {
+    throw new Error("Failed to fetch products");
+  }
+}
+
 
 export class StoreAdapter {
   async getProducts(): Promise<AxiosResponse<any, any>> {
@@ -22,7 +40,7 @@ export async function getProductsOrError(): Promise<Product[] | ApiError> {
     const response = await storeAdapter.getProducts();
     return response.data;
   } catch (error) {
-    const apiError = new ApiError("Failed to fetch products", error.response.status);
+    const apiError = new ApiError("Failed to fetch products");
     return apiError;
   }
 }

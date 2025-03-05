@@ -1,5 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
-import { ApiError, getProductsOrError, StoreAdapter } from './fake-store-api-client';
+import { ApiError, EmptyStoreAdapter, ErrorStoreAdapter, getProductsOrError, StoreAdapter } from './fake-store-api-client';
 import { Product } from './domain/Product';
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
@@ -42,26 +42,15 @@ app.on('activate', () => {
 });
 
 export class StoreRepository {
-
   constructor(private storeAdapter: StoreAdapter) { }
   public async getProductsOrError(): Promise<Product[] | ApiError> {
     try {
       const response = await this.storeAdapter.getProducts();
       return response.data;
     } catch (error) {
-      const apiError = new ApiError("Failed to fetch products", error.response.status);
+      const apiError = new ApiError("Failed to fetch products");
       return apiError;
     }
-  }
-}
-export class EmptyStore extends StoreRepository {
-  public async getProductsOrError(): Promise<Product[] | ApiError> {
-    return [];
-  }
-}
-export class ErrorStore extends StoreRepository {
-  public async getProductsOrError(): Promise<Product[] | ApiError> {
-    return new ApiError("Failed to fetch products", 500);
   }
 }
 
@@ -75,10 +64,12 @@ async function initializeStore() {
 }
 
 ipcMain.on('set-empty-store', async (event) => {
-  storeRepo = new EmptyStore(storeAdapter);
+  const emptyStoreAdapter = new EmptyStoreAdapter();
+  storeRepo = new StoreRepository(emptyStoreAdapter);
   await initializeStore();
 });
 ipcMain.on('set-store-with-error', async (event) => {
-  storeRepo = new ErrorStore(storeAdapter);
+  const errorAStoreAdapter = new ErrorStoreAdapter();
+  storeRepo = new StoreRepository(errorAStoreAdapter);
   await initializeStore();
 });

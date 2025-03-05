@@ -13,7 +13,7 @@ const productList = document.getElementById("product-list");
 
 window.storeAPI.loadProducts((event, products) => {
 
-  if (products instanceof ApiError) {
+  if (products instanceof Error) {
     productList!.innerHTML = `<li>Failed to fetch products</li>`;
   } else {
     const listOfProducts = products as Product[];

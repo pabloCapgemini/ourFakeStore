@@ -7,6 +7,6 @@ export interface IStoreAPI {
 }
 declare global {
     interface Window {
-        storeAPI: IStoreAPI;
+        storeAPI: IStoreAPI
     }
 }

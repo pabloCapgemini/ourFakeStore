@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Product } from "./domain/Product";
 import { Cart } from "./domain/Cart";
 
@@ -10,19 +10,16 @@ export class ApiError extends Error {
   }
 }
 
-// Fetch all products
-// export const getProducts = async (): Promise<Product[]> => {
-//   try {
-//     const response = await axios.get(`${API_URL}/products`);
-//     return response.data;
-//   } catch (error) {
-//     console.error("Error fetching products:", error);
-//     return [];
-//   }
-// };
+export class StoreAdapter {
+  async getProducts(): Promise<AxiosResponse<any, any>> {
+    return axios.get(`${API_URL}/products`);
+  }
+}
+
 export async function getProductsOrError(): Promise<Product[] | ApiError> {
+  const storeAdapter = new StoreAdapter();
   try {
-    const response = await axios.get(`${API_URL}/products`);
+    const response = await storeAdapter.getProducts();
     return response.data;
   } catch (error) {
     const apiError = new ApiError("Failed to fetch products", error.response.status);

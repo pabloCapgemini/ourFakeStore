@@ -17,7 +17,7 @@ const loadProducts = async () => {
       .map((product) => `<li>${product.title} - $${product.price}</li>`)
       .join("");
   } else {
-    productList!.innerHTML = "<li>Failed to load products</li>";
+    productList!.innerHTML = "<li>There are no products available.  Please come back soon!</li>";
   }
 };
 

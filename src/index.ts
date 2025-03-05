@@ -50,11 +50,11 @@ app.on('activate', () => {
   }
 });
 
-let isErrorOnLoadingProducts = false;
+let isEmptyStore = false;
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 ipcMain.handle("fetch-products", async () => {
-  if (isErrorOnLoadingProducts) {
+  if (isEmptyStore) {
     return [];
   }
   const products = await getProducts();
@@ -62,6 +62,6 @@ ipcMain.handle("fetch-products", async () => {
   return products;
 });
 
-ipcMain.on('set-error-loading-products', (event) => {
-  isErrorOnLoadingProducts = true;
+ipcMain.on('set-empty-store', (event) => {
+  isEmptyStore = true;
 });

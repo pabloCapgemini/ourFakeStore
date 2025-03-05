@@ -25,12 +25,12 @@ test('fake store displays products', async () => {
 
     await homePage.screenshot({ path: 'test-results/store-with-products.png', fullPage: true });
 });
-test('when products fail to load Store displays error message', async () => {
+test('when store has no product ux displays a nice message to users', async () => {
     await app.evaluate(({ ipcMain }) => {
-        ipcMain.emit('set-error-loading-products');
+        ipcMain.emit('set-empty-store');
     });
 
     const listItems = homePage.getByRole('listitem');
     await expect(listItems).toHaveCount(1);
-    await expect(listItems).toContainText(['Failed to load products']);
+    await expect(listItems).toContainText(['There are no products available.  Please come back soon!']);
 });

@@ -50,10 +50,18 @@ app.on('activate', () => {
   }
 });
 
+let isErrorOnLoadingProducts = false;
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 ipcMain.handle("fetch-products", async () => {
+  if (isErrorOnLoadingProducts) {
+    return [];
+  }
   const products = await getProducts();
   console.log('products: ' + products);
   return products;
+});
+
+ipcMain.on('set-error-loading-products', (event) => {
+  isErrorOnLoadingProducts = true;
 });

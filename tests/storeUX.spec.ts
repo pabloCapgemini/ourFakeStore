@@ -35,13 +35,13 @@ test('when store has no product ux displays a nice message to users', async () =
     await expect(listItems).toHaveCount(1);
     await expect(listItems).toContainText(['There are no products available.  Please come back soon!']);
 });
-// test('when there is an error fetching products the Store will display a nice error message', async () => {
-//     await app.evaluate(({ ipcMain }) => {
-//         ipcMain.emit('set-store-with-error');
-//     });
+test('when there is an error fetching products the Store will display a nice error message', async () => {
+    await app.evaluate(({ ipcMain }) => {
+        ipcMain.emit('set-store-with-error');
+    });
 
-//     await homePage.screenshot({ path: 'test-results/store-with-Error.png', fullPage: true });
-//     const listItems = homePage.getByRole('listitem');
-//     await expect(listItems).toHaveCount(1);
-//     await expect(listItems).toContainText(['Failed to fetch products']);
-// });
+    await homePage.screenshot({ path: 'test-results/store-with-Error.png', fullPage: true });
+    const listItems = homePage.getByRole('listitem');
+    await expect(listItems).toHaveCount(1);
+    await expect(listItems).toContainText(['Failed to fetch products']);
+});

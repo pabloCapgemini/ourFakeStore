@@ -25,7 +25,7 @@ export async function getProductsOrError(): Promise<Product[] | ApiError> {
     const response = await axios.get(`${API_URL}/products`);
     return response.data;
   } catch (error) {
-    const  apiError = new ApiError("Failed to fetch products", error.response.status);
+    const apiError = new ApiError("Failed to fetch products", error.response.status);
     return apiError;
   }
 }
@@ -62,7 +62,7 @@ export const addToCart = async (userId: number, productId: number, quantity: num
   const products = await getProductsOrError();
   console.log(products);
 
-  if (!(products instanceof ApiError) &&(products.length > 0)) {
+  if (!(products instanceof ApiError) && (products.length > 0)) {
     console.log("Fetching product details for ID 1...");
     const product = await getProductById(1);
     console.log(product);

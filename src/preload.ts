@@ -5,6 +5,5 @@ import { Product } from "./domain/Product";
 import { ApiError } from "./fake-store-api-client";
 
 contextBridge.exposeInMainWorld("storeAPI", {
-
-    loadProducts: (callback: (event: Electron.IpcRendererEvent, products: Product[] |  ApiError) => void) => ipcRenderer.on("load-products", callback)
+    loadProducts: (callback: (event: Electron.IpcRendererEvent, products: Product[] | ApiError) => void) => ipcRenderer.on("load-products", callback),
 });

@@ -15,7 +15,6 @@ window.storeAPI.loadProducts((event, products) => {
 
   if (products instanceof ApiError) {
     productList!.innerHTML = `<li>Failed to fetch products</li>`;
-    return;
   } else {
     const listOfProducts = products as Product[];
     if (listOfProducts.length > 0) {

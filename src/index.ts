@@ -19,7 +19,6 @@ const createWindow = async (): Promise<void> => {
     },
   });
 
-
   storeWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
   storeWindow.webContents.on('did-finish-load', async () => {
     await initializeStore();
@@ -43,19 +42,19 @@ app.on('activate', () => {
 });
 
 export class StoreRepository {
-  // public async getProducts(): Promise<Product[]> {
-  //   return getProducts();
-  // }
+
   public async getProductsOrError(): Promise<Product[] | ApiError> {
     return getProductsOrError();
   }
 }
 export class EmptyStore extends StoreRepository {
-  // public async getProducts(): Promise<Product[]> {
-  //   return [];
-  // }
   public async getProductsOrError(): Promise<Product[] | ApiError> {
     return [];
+  }
+}
+export class ErrorStore extends StoreRepository {
+  public async getProductsOrError(): Promise<Product[] | ApiError> {
+    return new ApiError("Failed to fetch products", 500);
   }
 }
 
@@ -69,5 +68,9 @@ async function initializeStore(){
 
 ipcMain.on('set-empty-store', async (event) => {
   storeRepo = new EmptyStore();
+  await initializeStore();
+});
+ipcMain.on('set-store-with-error', async (event) => {
+  storeRepo = new ErrorStore();
   await initializeStore();
 });

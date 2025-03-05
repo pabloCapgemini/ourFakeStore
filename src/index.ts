@@ -11,9 +11,10 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+let storeWindow: BrowserWindow;
 const createWindow = (): void => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  storeWindow = new BrowserWindow({
     height: 600,
     width: 800,
     webPreferences: {
@@ -22,7 +23,10 @@ const createWindow = (): void => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  storeWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  storeWindow.webContents.on('did-finish-load', async () => {
+    console.log('App finsihed loading... ');
+  });
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();

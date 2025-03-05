@@ -27,3 +27,12 @@ test('fake store displays products', async () => {
 
     await homePage.screenshot({ path: 'test-results/store-with-products.png', fullPage: true });
 });
+test('when products fail to load Store displays error message', async () => {
+    await app.evaluate(({ ipcMain }) => {
+        ipcMain.emit('set-error-loading-products');
+    });
+
+    const listItems = homePage.getByRole('listitem');
+    await expect(listItems).toHaveCount(1);
+    await expect(listItems).toContainText(['Failed to load products']);
+});

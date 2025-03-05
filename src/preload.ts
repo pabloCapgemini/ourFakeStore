@@ -5,4 +5,5 @@ import { Product } from "./domain/Product";
 
 contextBridge.exposeInMainWorld("storeAPI", {
     fetchProducts: (): Promise<Product[]> => ipcRenderer.invoke("fetch-products"),
+    loadProducts: (callback: (event: Electron.IpcRendererEvent, products: Product[]) => void) => ipcRenderer.on("load-products", callback)
 });

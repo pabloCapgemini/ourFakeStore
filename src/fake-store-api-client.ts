@@ -4,6 +4,12 @@ import { Cart } from "./domain/Cart";
 
 const API_URL = "https://fakestoreapi.com";
 
+export class ApiError extends Error {
+  constructor(message: string, public status: number) {
+    super(message);
+  }
+}
+
 // Fetch all products
 export const getProducts = async (): Promise<Product[]> => {
   try {
@@ -14,6 +20,15 @@ export const getProducts = async (): Promise<Product[]> => {
     return [];
   }
 };
+export async function getProductsOrError(): Promise<Product[] | ApiError> {
+  try {
+    const response = await axios.get(`${API_URL}/products`);
+    return response.data;
+  } catch (error) {
+    const  apiError = new ApiError("Failed to fetch products", error.response.status);
+    return apiError;
+  }
+}
 
 // Fetch a single product by ID
 export const getProductById = async (id: number): Promise<Product | null> => {

@@ -12,7 +12,7 @@ test('should launch Electron app', async () => {
     expect(title).toBe('Fake Store');
 
     // Take a screenshot for debugging
-    await window.screenshot({ path: 'test-results/app.png', fullPage: true });
+    await window.screenshot({ path: 'test-results/app-bluntInt.png', fullPage: true });
 
     // Close the app
     await app.close();

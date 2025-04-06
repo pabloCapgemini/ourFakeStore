@@ -29,8 +29,7 @@ const createWindow = async (): Promise<void> => {
   storeWindow.webContents.on('did-finish-load', async () => {
     await initializeStore();
   });
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  
 };
 
 // This method will be called when Electron has finished

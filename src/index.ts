@@ -55,7 +55,7 @@ app.on('activate', () => {
 });
 // This is the main process of the Electron app.
 
-let isErrorSetLoadingProducts = false;
+
 let storeRepo = new StoreRepository();
 
 export async function initializeStore() {
@@ -70,13 +70,11 @@ ipcMain.handle("fetch-products", async () => {
 });
 
 ipcMain.on("set-empty-store", async () => {
-  isErrorSetLoadingProducts = true;
   storeRepo = new EmptyStore();
   await initializeStore();
 });
 
 ipcMain.on("set-store-with-error", async () => {
-  isErrorSetLoadingProducts = true;
   storeRepo = new ErrorStore();
   await initializeStore();
 });

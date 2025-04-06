@@ -11,7 +11,7 @@ export class ApiError extends Error {
   }
 }
 
-export async function getProductsOrError():Promise<Product[]|ApiError> {
+export async function getProductsOrError(): Promise<Product[] | ApiError> {
   try {
     const response = await axios.get(`${API_URL}/products`);
     return response.data;

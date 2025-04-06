@@ -26,9 +26,10 @@ const createWindow = async (): Promise<void> => {
   // and load the index.html of the app.
   storeWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
-  await initializeStore();
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  storeWindow.webContents.on('did-finish-load', async () => {
+    await initializeStore();
+  });
+
 };
 
 // This method will be called when Electron has finished

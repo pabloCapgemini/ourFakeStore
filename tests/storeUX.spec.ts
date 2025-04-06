@@ -37,3 +37,13 @@ test('when store is empty our app will display a nice message', async () => {
     await expect(listItems).toHaveCount(1);
     await expect(listItems).toContainText(['Store is empty, please come back soon!']);
 });
+test('when there is an error fetching products the Store will display a nice error message', async () => {
+    await app.evaluate(({ ipcMain }) => {
+        ipcMain.emit('set-store-with-error');
+    });
+
+    await homePage.screenshot({ path: 'test-results/store-with-Error.png', fullPage: true });
+    const listItems = homePage.getByRole('listitem');
+    await expect(listItems).toHaveCount(1);
+    await expect(listItems).toContainText(['Failed to fetch products']);
+});

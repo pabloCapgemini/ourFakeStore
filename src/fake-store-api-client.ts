@@ -4,16 +4,22 @@ import { Cart } from "./domain/Cart";
 
 const API_URL = "https://fakestoreapi.com";
 
-// Fetch all products
-export const getProducts = async (): Promise<Product[]> => {
+export class ApiError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
+
+export async function getProductsOrError():Promise<Product[]|ApiError> {
   try {
     const response = await axios.get(`${API_URL}/products`);
     return response.data;
   } catch (error) {
     console.error("Error fetching products:", error);
-    return [];
+    return new ApiError("Failed to fetch products");
   }
-};
+}
 
 // Fetch a single product by ID
 export const getProductById = async (id: number): Promise<Product | null> => {
@@ -42,22 +48,22 @@ export const addToCart = async (userId: number, productId: number, quantity: num
 };
 
 // Example usage
-(async () => {
-  console.log("Fetching products...");
-  const products = await getProducts();
-  console.log(products);
+// (async () => {
+//   console.log("Fetching products...");
+//   const products = await getProducts();
+//   console.log(products);
 
-  if (products.length > 0) {
-    console.log("Fetching product details for ID 1...");
-    const product = await getProductById(1);
-    console.log(product);
-  }
+//   if (products.length > 0) {
+//     console.log("Fetching product details for ID 1...");
+//     const product = await getProductById(1);
+//     console.log(product);
+//   }
 
-  console.log("Adding product ID 1 to user ID 1's cart...");
-  const cart = await addToCart(1, 1, 2);
-  console.log(cart);
+//   console.log("Adding product ID 1 to user ID 1's cart...");
+//   const cart = await addToCart(1, 1, 2);
+//   console.log(cart);
 
-  console.log('getting all Users...');
-  const users = await axios.get(`${API_URL}/users`);
-  console.log(users.data);
-})();
+//   console.log('getting all Users...');
+//   const users = await axios.get(`${API_URL}/users`);
+//   console.log(users.data);
+// })();

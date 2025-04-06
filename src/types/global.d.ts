@@ -1,7 +1,7 @@
 
 
 export interface IStoreAPI {
-    fetchProducts: () => Promise<Product[]>;
+    fetchProducts: () => Promise<Product[]|ApiError>;
 }
 declare global {
     interface Window {

@@ -2,7 +2,8 @@ import { _electron as electron, test, expect } from '@playwright/test';
 
 test('should launch Electron app', async () => {
     // Launch the Electron app
-    const app = await electron.launch({ args: ['.webpack/arm64/main/'] });
+    const platform = process.arch;
+    const app = await electron.launch({ args: [`.webpack/${platform}/main/`] });
 
     // Get the first window
     const window = await app.firstWindow();

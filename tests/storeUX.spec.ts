@@ -6,6 +6,7 @@ let homePage: Page;
 
 test.beforeAll(async () => {
     app = await electron.launch({ args: ['.webpack/arm64/main/'] });
+    
     homePage = await app.firstWindow();
 });
 test.afterAll(async () => {

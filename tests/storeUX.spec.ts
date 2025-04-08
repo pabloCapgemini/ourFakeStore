@@ -5,15 +5,14 @@ let app: ElectronApplication;
 let homePage: Page;
 
 test.beforeAll(async () => {
-    app = await electron.launch({ args: ['.webpack/arm64/main/'] });
+    app = await electron.launch({ args: [`.webpack/${process.arch}/main/`] });
     homePage = await app.firstWindow();
 });
 test.afterAll(async () => {
     await app.close();
 });
 test('should launch Electron app', async () => {
-    const app = await electron.launch({ args: ['.webpack/arm64/main/'] });
-
+    
     const title = await homePage.title();
     expect(title).toBe('Fake Store');
 

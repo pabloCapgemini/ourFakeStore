@@ -34,6 +34,8 @@ test('when the store is empty we get a nice message', async () => {
     await expect(listItems).toHaveCount(1);
     await expect(listItems).toContainText(['Store is empty.  Please come back soon!']);
 });
+
+// 1 - Add Error Test---------
 // test('when there is an error fetching products the Store will display a nice error message', async () => {
 //     await app.evaluate(({ ipcMain }) => {
 //         ipcMain.emit('set-store-with-error');

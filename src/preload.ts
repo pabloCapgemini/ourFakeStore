@@ -2,7 +2,8 @@
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
 import { contextBridge, ipcRenderer } from "electron";
 import { Product } from "./domain/Product";
+import { ApiError } from "./fake-store-api-client";
 
 contextBridge.exposeInMainWorld("storeAPI", {
-    fetchProducts: (): Promise<Product[]> => ipcRenderer.invoke("fetch-products"),
+    fetchProducts: (): Promise<Product[] | ApiError> => ipcRenderer.invoke("fetch-products"),
 });

@@ -67,22 +67,21 @@ export class EmptyStoreRepository{
     return [];
   }
 }
-// In this file you can include the rest of your app's specific main process
 
 let storeRepo = new StoreRepository();
-let isErrorLoadingProduct = false;
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+
 ipcMain.handle("fetch-products", async () => {
-  // if (isErrorLoadingProduct) {
-  //   return [];
-  // }
+
   const products = await storeRepo.getProducts();
   console.log('products: ' + products);
   return products;
 });
 
-ipcMain.on('set-error-loading-products', (event) => {
-  isErrorLoadingProduct = true;
+ipcMain.on('set-empty-store', (event) => {
   storeRepo = new EmptyStoreRepository();
 });
+
+// ipcMain.on("set-store-with-error", async () => {
+//   storeRepo = new ErrorStoreRepository();
+//   await initializeStore();
+// });

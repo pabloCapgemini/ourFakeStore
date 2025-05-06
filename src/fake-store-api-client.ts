@@ -26,7 +26,7 @@ export class EmptyStoreAdapter extends StoreAdapter {
     return Promise.resolve(response);
   }
 }
-export class ErrorStoreAdapter extends StoreAdapter {
+export class ErrorStoreAdapter extends StoreAdapter { 
   public getProducts(): Promise<AxiosResponse<any, any>> {
     throw new Error("Failed to fetch products");
   }

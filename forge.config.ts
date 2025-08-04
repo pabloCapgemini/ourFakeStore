@@ -14,7 +14,7 @@ import { rendererConfig } from './webpack.renderer.config';
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
-    name:"OurFakeStore",
+    name: "OurFakeStore",
   },
   rebuildConfig: {},
   makers: [new MakerSquirrel({}), new MakerZIP({}, ['darwin']), new MakerRpm({}), new MakerDeb({})],
@@ -27,7 +27,7 @@ const config: ForgeConfig = {
         entryPoints: [
           {
             html: './src/index.html',
-            js: './src/renderer.ts',
+            js: './src/renderer.tsx',
             name: 'main_window',
             preload: {
               js: './src/preload.ts',
@@ -35,7 +35,7 @@ const config: ForgeConfig = {
           },
         ],
       },
-      loggerPort:9001,
+      loggerPort: 9001,
     }),
     // Fuses are used to enable/disable various Electron functionality
     // at package time, before code signing the application

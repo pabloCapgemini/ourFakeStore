@@ -1,4 +1,6 @@
 
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 import { eventNames } from 'process';
 import { Product } from './domain/Product';
 import './index.css';

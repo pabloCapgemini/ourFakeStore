@@ -10,13 +10,18 @@ module.exports = {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
   testMatch: [
-    '<rootDir>/src/**/__tests__/**/*.(ts|tsx)',
-    '<rootDir>/src/**/*.(test|spec).(ts|tsx)'
+    '<rootDir>/tests/components/**/*.(test|spec).(ts|tsx)'
   ],
   testPathIgnorePatterns: [
-    '<rootDir>/tests/',
+    '<rootDir>/tests/storeUX.spec.ts',
+    '<rootDir>/tests/types.spec.ts', 
     '<rootDir>/tests-examples/',
     '<rootDir>/node_modules/'
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.json'
+    }
+  }
 };

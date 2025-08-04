@@ -16,6 +16,7 @@
       "DOM",
       "ES6"
     ],
+    "types": ["jest", "node"],
     "allowSyntheticDefaultImports": true,
     "paths": {
       "*": [
@@ -24,6 +25,7 @@
     }
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "tests/**/*"
   ]
 }

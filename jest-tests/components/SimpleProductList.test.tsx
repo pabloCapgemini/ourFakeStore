@@ -23,7 +23,7 @@ describe('SimpleProductList', () => {
     title: 'DANVOUY Womens T Shirt Casual Cotton Short',
     price: 12.99,
     description: '95%Cotton,5%Spandex, Features: Casual, Short Sleeve',
-    category: 'women\'s clothing', 
+    category: 'women\'s clothing',
     image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg'
   };
 
@@ -31,30 +31,30 @@ describe('SimpleProductList', () => {
 
   test('renders loading state when productsOrError is null', () => {
     render(<ul><SimpleProductList productsOrError={null} /></ul>);
-    
+
     expect(screen.getByText('Loading products...')).toBeInTheDocument();
   });
 
   test('renders error state when productsOrError is an Error', () => {
     const error = new Error('Network error');
     render(<ul><SimpleProductList productsOrError={error} /></ul>);
-    
+
     expect(screen.getByText('Failed to fetch products')).toBeInTheDocument();
   });
 
   test('renders empty state when productsOrError is an empty array', () => {
     render(<ul><SimpleProductList productsOrError={[]} /></ul>);
-    
+
     expect(screen.getByText('No products available. Please come back soon!')).toBeInTheDocument();
   });
 
   test('renders product list when productsOrError contains products', () => {
     render(<ul><SimpleProductList productsOrError={mockProducts} /></ul>);
-    
+
     // Check that both products are rendered
     expect(screen.getByText('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops - $109.95')).toBeInTheDocument();
     expect(screen.getByText('DANVOUY Womens T Shirt Casual Cotton Short - $12.99')).toBeInTheDocument();
-    
+
     // Check that we have the correct number of list items
     const listItems = screen.getAllByRole('listitem');
     expect(listItems).toHaveLength(2);
@@ -62,21 +62,21 @@ describe('SimpleProductList', () => {
 
   test('renders single product correctly', () => {
     render(<ul><SimpleProductList productsOrError={[mockProduct1]} /></ul>);
-    
+
     expect(screen.getByText('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops - $109.95')).toBeInTheDocument();
-    
+
     const listItems = screen.getAllByRole('listitem');
     expect(listItems).toHaveLength(1);
   });
 
   test('product items have correct structure and content', () => {
     render(<ul><SimpleProductList productsOrError={mockProducts} /></ul>);
-    
+
     const listItems = screen.getAllByRole('listitem');
-    
+
     // First product
     expect(listItems[0]).toHaveTextContent('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops - $109.95');
-    
+
     // Second product
     expect(listItems[1]).toHaveTextContent('DANVOUY Womens T Shirt Casual Cotton Short - $12.99');
   });
@@ -84,9 +84,9 @@ describe('SimpleProductList', () => {
   test('matches vanilla DOM output format exactly', () => {
     // This test ensures our React component produces the same output as the vanilla implementation:
     // products.map((product) => `<li>${product.title} - $${product.price}</li>`)
-    
+
     render(<ul><SimpleProductList productsOrError={[mockProduct1]} /></ul>);
-    
+
     const listItem = screen.getByRole('listitem');
     expect(listItem).toHaveTextContent('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops - $109.95');
     expect(listItem.tagName.toLowerCase()).toBe('li');

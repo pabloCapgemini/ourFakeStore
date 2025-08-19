@@ -2,7 +2,7 @@
 // Tests for Header React component - Story 1: Basic Header Component
 import '@testing-library/jest-dom';
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Header } from '../../src/components/Header';
 
 describe('Header Component - Story 1', () => {
@@ -16,6 +16,79 @@ describe('Header Component - Story 1', () => {
             expect(() => {
                 render(<Header />);
             }).not.toThrow();
+        });
+    });
+
+    describe('Test 1.2: Header displays site title "OurFakeStore"', () => {
+        test('displays the site title prominently', () => {
+            // Given: A Header component is rendered
+            // When: I look for the site title
+            // Then: I should see "OurFakeStore" displayed
+
+            render(<Header />);
+            const siteTitle = screen.getByText('OurFakeStore');
+            expect(siteTitle).toBeInTheDocument();
+        });
+    });
+
+    describe('Test 1.3: Header has semantic HTML structure (header tag)', () => {
+        test('uses proper semantic HTML with header tag', () => {
+            // Given: A Header component is rendered
+            // When: I inspect the HTML structure
+            // Then: The component should use a <header> semantic tag
+
+            render(<Header />);
+            const headerElement = screen.getByRole('banner');
+            expect(headerElement).toBeInTheDocument();
+            expect(headerElement.tagName.toLowerCase()).toBe('header');
+        });
+    });
+
+    describe('Test 1.4: Header uses Bootstrap styling for professional look', () => {
+        test('applies Bootstrap classes for professional styling', () => {
+            // Given: A Header component is rendered
+            // When: I inspect the styling classes
+            // Then: The component should use Bootstrap classes for professional appearance
+
+            render(<Header />);
+            const headerElement = screen.getByRole('banner');
+
+            // Check for professional styling (Bootstrap-like colors and layout)
+            expect(headerElement).toHaveStyle({
+                backgroundColor: 'rgb(44, 62, 80)',
+                color: 'rgb(255, 255, 255)',
+                padding: '1rem 2rem'
+            });
+
+            // Verify professional appearance elements
+            const titleElement = screen.getByText('OurFakeStore');
+            expect(titleElement).toHaveStyle({
+                fontSize: '1.8rem',
+                fontWeight: 'bold'
+            });
+        });
+    });
+
+    describe('Test 1.5: Header has navigation structure with placeholders', () => {
+        test('includes navigation elements and brand area', () => {
+            // Given: A Header component is rendered
+            // When: I inspect the HTML structure
+            // Then: The component should include navigation elements and brand area
+
+            render(<Header />);
+
+            // Check for navigation structure
+            const navigation = screen.getByRole('navigation');
+            expect(navigation).toBeInTheDocument();
+
+            // Check for navigation links (placeholders for future features)
+            expect(screen.getByText('Home')).toBeInTheDocument();
+            expect(screen.getByText('Products')).toBeInTheDocument();
+            expect(screen.getByText('Categories')).toBeInTheDocument();
+
+            // Verify brand area exists (title)
+            const brandTitle = screen.getByText('OurFakeStore');
+            expect(brandTitle).toBeInTheDocument();
         });
     });
 

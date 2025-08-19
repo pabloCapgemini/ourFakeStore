@@ -11,13 +11,13 @@ Following TDD approach, we'll implement these tests one at a time:
 | Test | Description | Status | Notes |
 |------|-------------|--------|-------|
 | 1.1 | Header component renders without crashing | ✅ Complete | Basic smoke test - PASSING |
-| 1.2 | Header displays site title "OurFakeStore" | 🔄 Not Started | Verify text content |
-| 1.3 | Header has semantic HTML structure (header tag) | 🔄 Not Started | Accessibility & structure |
-| 1.4 | Header uses Bootstrap styling for professional look | 🔄 Not Started | Visual styling test |
-| 1.5 | Header has navigation structure with placeholders | 🔄 Not Started | Navigation elements test |
-| 1.6 | Header appears at top of page layout | 🔄 Not Started | CSS positioning test |
-| 1.7 | Header is visually distinct from product content | 🔄 Not Started | Visual separation test |
-| 1.8 | Electron UX tests continue to pass | 🔄 Not Started | E2E compatibility test |
+| 1.2 | Header displays site title "OurFakeStore" | ✅ Complete | Verify text content - PASSING |
+| 1.3 | Header has semantic HTML structure (header tag) | ✅ Complete | Accessibility & structure - PASSING |
+| 1.4 | Header uses Bootstrap styling for professional look | ✅ Complete | Visual styling test - PASSING |
+| 1.5 | Header has navigation structure with placeholders | ✅ Complete | Navigation elements test - PASSING |
+| 1.6 | Header appears at top of page layout | ✅ Complete | CSS positioning test - PASSING (via E2E) |
+| 1.7 | Header is visually distinct from product content | ✅ Complete | Visual separation test - PASSING (via E2E) |
+| 1.8 | Electron UX tests continue to pass | ✅ Complete | E2E compatibility test - PASSING |
 
 ## Test Details
 

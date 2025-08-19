@@ -10,7 +10,7 @@ import './index.css';
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
 const app = document.createElement("div");
-app.innerHTML = `<h2>FakeStore Products</h2><ul id="product-list"></ul>`;
+app.innerHTML = `<ul id="product-list"></ul>`;
 document.body.appendChild(app);
 
 const productList = document.getElementById("product-list");
@@ -59,7 +59,7 @@ window.storeAPI.loadProducts((event, productsOrError) => {
 const App: React.FC<{ products: Product[] | Error | null }> = ({ products }) => {
   return (
     <div>
-      <h2>FakeStore Products</h2>
+      <Header />
       <ul id="product-list">
         <SimpleProductList productsOrError={products} />
       </ul>

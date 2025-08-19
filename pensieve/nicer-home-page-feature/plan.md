@@ -8,7 +8,8 @@ Based on our brainstorming session, here are the incremental stories that build 
 
 | Story | Description | Status | Demo Points |
 |-------|-------------|--------|-------------|
-| 1 | **Basic Header Component** - Create a simple header with site title and placeholder for future navigation items | � In Progress | Header appears at top of page, title visible |
+| 1 | **Professional Header Component** - Create a professional e-commerce header with site branding, Bootstrap styling, and navigation structure | 🚧 In Progress | Professional header with title, styling, and navigation placeholders visible |
+| 1.5 | **API Mocking for Reliable Tests** - Mock FakeStore API responses to ensure tests pass regardless of external API availability | 🔄 Not Started | All Playwright tests pass consistently with mocked data |
 | 2 | **Shopping Cart Icon** - Add shopping cart icon to header with item count (starts at 0) | 🔄 Not Started | Cart icon visible in header, shows "0 items" |
 | 3 | **Search Bar Component** - Add functional search bar to header that filters the product list | 🔄 Not Started | Search box works, typing filters products in real-time |
 | 4 | **Enhanced Product Cards** - Replace simple list with card-style product display showing image, title, price | 🔄 Not Started | Products shown as cards instead of list items |
@@ -17,10 +18,21 @@ Based on our brainstorming session, here are the incremental stories that build 
 
 ## Story Details
 
-### Story 1: Basic Header Component
-- **Goal:** Establish the foundation for our e-commerce header
-- **Testable:** Header renders with site name
-- **Demo:** Point to the new header structure
+## Story 1: Professional Header Component
+A professional, modern e-commerce header with proper branding, navigation structure, and styling that matches contemporary online stores.
+
+**Tests:** 8 total (Test 1.1 ✅ Complete)
+- See: [story-1-basic-header.md](./story-1-basic-header.md)
+
+**Why This Story:** Every professional e-commerce site needs a strong header that immediately conveys credibility and purpose. This creates the foundation for user trust and navigation.
+
+## Story 1.5: API Mocking for Reliable Tests
+Implement comprehensive API mocking to ensure tests pass consistently regardless of external FakeStore API availability.
+
+**Tests:** 6 total
+- See: [story-1.5-api-mocking.md](./story-1.5-api-mocking.md)
+
+**Why This Story:** External API dependencies make tests unreliable. Mocking ensures consistent test results and faster development cycles.
 
 ### Story 2: Shopping Cart Icon  
 - **Goal:** Add visual cart element users expect in e-commerce

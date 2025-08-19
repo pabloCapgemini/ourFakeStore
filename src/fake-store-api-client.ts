@@ -12,8 +12,8 @@ export class StoreAdapter {
 }
 export class EmptyStoreAdapter extends StoreAdapter {
   public getProducts(): Promise<AxiosResponse<any, any>> {
-    
-    const emptyProduct:Product[] = [];
+
+    const emptyProduct: Product[] = [];
     const response: AxiosResponse<any, any> = {
       data: emptyProduct,
       status: 200,
@@ -26,9 +26,27 @@ export class EmptyStoreAdapter extends StoreAdapter {
     return Promise.resolve(response);
   }
 }
-export class ErrorStoreAdapter extends StoreAdapter { 
+export class ErrorStoreAdapter extends StoreAdapter {
   public getProducts(): Promise<AxiosResponse<any, any>> {
     throw new Error("Failed to fetch products");
+  }
+}
+
+export class MockStoreAdapter extends StoreAdapter {
+  public getProducts(): Promise<AxiosResponse<any, any>> {
+    // Import testProducts from our existing mock data
+    const { testProducts } = require('../tests/productsData');
+
+    const response: AxiosResponse<any, any> = {
+      data: testProducts,
+      status: 200,
+      statusText: "OK",
+      headers: {},
+      config: {
+        headers: undefined
+      },
+    };
+    return Promise.resolve(response);
   }
 }
 
@@ -77,23 +95,23 @@ export const addToCart = async (userId: number, productId: number, quantity: num
   }
 };
 
-// Example usage
-(async () => {
-  console.log("Fetching products...");
-  const products = await getProductsOrError();
-  console.log(products);
+// Example usage - commented out to avoid console output during tests
+// (async () => {
+//   console.log("Fetching products...");
+//   const products = await getProductsOrError();
+//   console.log(products);
 
-  if (!(products instanceof ApiError) && products.length > 0) {
-    console.log("Fetching product details for ID 1...");
-    const product = await getProductById(1);
-    console.log(product);
-  }
+//   if (!(products instanceof ApiError) && products.length > 0) {
+//     console.log("Fetching product details for ID 1...");
+//     const product = await getProductById(1);
+//     console.log(product);
+//   }
 
-  console.log("Adding product ID 1 to user ID 1's cart...");
-  const cart = await addToCart(1, 1, 2);
-  console.log(cart);
+//   console.log("Adding product ID 1 to user ID 1's cart...");
+//   const cart = await addToCart(1, 1, 2);
+//   console.log(cart);
 
-  console.log('getting all Users...');
-  const users = await axios.get(`${API_URL}/users`);
-  console.log(users.data);
-})();
+//   console.log('getting all Users...');
+//   const users = await axios.get(`${API_URL}/users`);
+//   console.log(users.data);
+// })();

@@ -29,10 +29,10 @@ A professional, modern e-commerce header with proper branding, navigation struct
 ## Story 1.5: API Mocking for Reliable Tests
 Implement comprehensive API mocking to ensure tests pass consistently regardless of external FakeStore API availability.
 
-**Tests:** 6 total
+**Tests:** 7 total (includes contract testing)
 - See: [story-1.5-api-mocking.md](./story-1.5-api-mocking.md)
 
-**Why This Story:** External API dependencies make tests unreliable. Mocking ensures consistent test results and faster development cycles.
+**Why This Story:** External API dependencies make tests unreliable. MockStoreAdapter ensures consistent test results, faster development cycles, and contract testing protects against API changes.
 
 ### Story 2: Shopping Cart Icon  
 - **Goal:** Add visual cart element users expect in e-commerce

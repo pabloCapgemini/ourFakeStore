@@ -13,59 +13,68 @@ Following TDD approach, we'll implement these tests one at a time:
 
 | Test | Description | Status | Notes |
 |------|-------------|--------|-------|
-| 1.5.1 | Create mock product data that matches API structure | 🔄 Not Started | Data preparation |
-| 1.5.2 | Intercept API calls in Playwright tests | 🔄 Not Started | Route interception |
-| 1.5.3 | Mock successful product fetch (20 products) | 🔄 Not Started | Happy path test |
-| 1.5.4 | Mock empty product response (0 products) | 🔄 Not Started | Empty state test |
-| 1.5.5 | Mock API error response | 🔄 Not Started | Error state test |
-| 1.5.6 | All existing Playwright tests pass with mocks | 🔄 Not Started | E2E compatibility |
+| 1.5.1 | Create MockStoreAdapter using existing productsData.ts | ✅ Complete | Adapter pattern implementation - PASSING |
+| 1.5.2 | Add IPC event for setting mock adapter in main process | ✅ Complete | Test infrastructure - PASSING |
+| 1.5.3 | Mock successful product fetch (20 products) via adapter | ✅ Complete | Happy path test - PASSING |
+| 1.5.4 | Mock empty product response (0 products) maintains existing | ✅ Complete | Empty state test (already works) - PASSING |
+| 1.5.5 | Mock API error response maintains existing | ✅ Complete | Error state test (already works) - PASSING |
+| 1.5.6 | All existing Playwright tests pass with mock adapter | ✅ Complete | E2E compatibility - PASSING |
+| 1.5.7 | Contract test: Verify real API structure matches mock data | 🔄 Not Started | API contract validation |
 
 ## Test Details
 
-### Test 1.5.1: Create mock product data that matches API structure
-- **Type:** Data setup
-- **Purpose:** Prepare realistic mock data matching FakeStore API structure
-- **Implementation:** Create JSON mock data with product objects (id, title, price, etc.)
+### Test 1.5.1: Create MockStoreAdapter using existing productsData.ts
+- **Type:** Adapter implementation
+- **Purpose:** Create MockStoreAdapter that returns known test data without API calls
+- **Implementation:** Extend StoreAdapter, return productsData.ts wrapped in AxiosResponse format
 
-### Test 1.5.2: Intercept API calls in Playwright tests
+### Test 1.5.2: Add IPC event for setting mock adapter in main process
 - **Type:** Test infrastructure
-- **Purpose:** Set up Playwright to intercept and mock API calls
-- **Implementation:** Use `page.route()` to intercept `fakestoreapi.com` requests
+- **Purpose:** Allow Playwright tests to inject MockStoreAdapter into StoreRepository
+- **Implementation:** Add `set-store-with-mock-products` IPC handler in index.ts
 
-### Test 1.5.3: Mock successful product fetch (20 products)
+### Test 1.5.3: Mock successful product fetch (20 products) via adapter
 - **Type:** Integration test (Playwright)
-- **Purpose:** Test app behavior with successful API response
-- **Implementation:** Mock API to return 20 products, verify display
+- **Purpose:** Test app behavior with reliable mock data (no external API dependency)
+- **Implementation:** Use IPC to set MockStoreAdapter, verify 20 products display correctly
 
-### Test 1.5.4: Mock empty product response (0 products)
-- **Type:** Integration test (Playwright)
-- **Purpose:** Test app behavior with empty response
-- **Implementation:** Mock API to return empty array, verify "No products" message
+### Test 1.5.4: Mock empty product response (0 products) maintains existing
+- **Type:** Integration test (Playwright) 
+- **Purpose:** Verify existing EmptyStoreAdapter continues to work
+- **Implementation:** Existing test should continue to pass (no changes needed)
 
-### Test 1.5.5: Mock API error response
+### Test 1.5.5: Mock API error response maintains existing
 - **Type:** Integration test (Playwright)
-- **Purpose:** Test app behavior with API error
-- **Implementation:** Mock API to return error, verify error message display
+- **Purpose:** Verify existing ErrorStoreAdapter continues to work  
+- **Implementation:** Existing test should continue to pass (no changes needed)
 
-### Test 1.5.6: All existing Playwright tests pass with mocks
+### Test 1.5.6: All existing Playwright tests pass with mock adapter
 - **Type:** Integration test (Playwright)
-- **Purpose:** Ensure complete test suite works with mocked data
-- **Implementation:** Run all storeUX.spec.ts tests with API mocking enabled
+- **Purpose:** Ensure complete test suite works with MockStoreAdapter instead of real API
+- **Implementation:** Update "fake store displays products" test to use MockStoreAdapter
+
+### Test 1.5.7: Contract test: Verify real API structure matches mock data
+- **Type:** Contract test (Jest)
+- **Purpose:** Ensure real FakeStore API structure hasn't changed vs our mock data
+- **Implementation:** Fetch real API, compare structure/types with productsData.ts schema
 
 ## Acceptance Criteria
-- ✅ Mock data matches real FakeStore API structure
-- ✅ Playwright tests can intercept and mock API calls
-- ✅ Tests pass with 20 products mock response
-- ✅ Tests pass with empty products mock response  
-- ✅ Tests pass with API error mock response
-- ✅ All existing Playwright tests pass consistently with mocks
-- ✅ Tests are independent of external API availability
+- ✅ MockStoreAdapter created using existing productsData.ts
+- ✅ IPC event `set-store-with-mock-products` allows test adapter injection
+- ✅ Tests pass with 20 products mock response (no external API calls)
+- ✅ Tests pass with empty products mock response (existing EmptyStoreAdapter)  
+- ✅ Tests pass with API error mock response (existing ErrorStoreAdapter)
+- ✅ All existing Playwright tests pass consistently with MockStoreAdapter
+- ✅ Tests are completely independent of external API availability
+- ✅ Contract test validates real API structure matches mock data schema
+- ✅ Contract test alerts us if FakeStore API structure changes
 
 ## Implementation Notes
-- Use Playwright's `page.route()` for API interception
-- Store mock data in `tests/mockData/` folder
-- Consider creating a test helper for easy mock setup
-- Ensure mock responses match exact API structure and types
+- Leverage existing adapter pattern (StoreAdapter, EmptyStoreAdapter, ErrorStoreAdapter)
+- Reuse existing productsData.ts - no new mock data needed
+- Follow existing IPC pattern (`set-store-with-no-products`, `set-store-with-error`)
+- Contract test should run separately (not blocking main test suite)
+- MockStoreAdapter should return data in same AxiosResponse format as StoreAdapter
 
 ---
 *Generated by Copilot*

@@ -33,6 +33,11 @@ test('should display professional header instead of old titles', async () => {
     await homePage.screenshot({ path: 'test-results/professional-header.png', fullPage: true });
 });
 test('fake store displays products', async () => {
+    // Use MockStoreAdapter for reliable testing (no external API dependency)
+    await app.evaluate(({ ipcMain }) => {
+        ipcMain.emit('set-store-with-mock-products');
+    });
+
     const productList = homePage.locator('#product-list');
     const listItems = productList.getByRole('listitem');
 
@@ -42,6 +47,7 @@ test('fake store displays products', async () => {
 
     await homePage.screenshot({ path: 'test-results/store-with-products.png', fullPage: true });
 });
+
 test('when there are no products the Store displays special message', async () => {
     await app.evaluate(({ ipcMain }) => {
         ipcMain.emit('set-store-with-no-products');

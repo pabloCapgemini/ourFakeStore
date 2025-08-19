@@ -1,0 +1,56 @@
+{
+    "navigation": {
+        "home": "Startseite",
+        "products": "Produkte",
+        "categories": "Kategorien",
+        "cart": "Warenkorb",
+        "account": "Konto",
+        "login": "Anmelden",
+        "logout": "Abmelden"
+    },
+    "search": {
+        "placeholder": "Produkte suchen...",
+        "noResults": "Keine Produkte gefunden",
+        "resultsFor": "Ergebnisse für \"{query}\""
+    },
+    "product": {
+        "featuredProducts": "Empfohlene Produkte",
+        "allProducts": "Alle Produkte",
+        "price": "Preis",
+        "addToCart": "In den Warenkorb",
+        "viewDetails": "Details anzeigen",
+        "outOfStock": "Nicht vorrätig",
+        "inStock": "Auf Lager"
+    },
+    "categories": {
+        "all": "Alle",
+        "electronics": "Elektronik",
+        "clothing": "Kleidung",
+        "books": "Bücher",
+        "home": "Haus & Garten",
+        "sports": "Sport"
+    },
+    "cart": {
+        "title": "Warenkorb",
+        "empty": "Ihr Warenkorb ist leer",
+        "items": "Artikel",
+        "total": "Gesamt",
+        "checkout": "Zur Kasse",
+        "remove": "Entfernen",
+        "quantity": "Anzahl"
+    },
+    "messages": {
+        "loading": "Produkte werden geladen...",
+        "error": "Fehler beim Laden der Produkte",
+        "noProducts": "Keine Produkte verfügbar. Bitte kommen Sie bald wieder!",
+        "welcome": "Willkommen bei OurFakeStore"
+    },
+    "common": {
+        "save": "Speichern",
+        "cancel": "Abbrechen",
+        "close": "Schließen",
+        "next": "Weiter",
+        "previous": "Zurück",
+        "more": "Mehr"
+    }
+}

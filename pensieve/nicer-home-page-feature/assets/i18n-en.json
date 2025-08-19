@@ -1,0 +1,56 @@
+{
+    "navigation": {
+        "home": "Home",
+        "products": "Products",
+        "categories": "Categories",
+        "cart": "Cart",
+        "account": "Account",
+        "login": "Login",
+        "logout": "Logout"
+    },
+    "search": {
+        "placeholder": "Search products...",
+        "noResults": "No products found",
+        "resultsFor": "Results for \"{query}\""
+    },
+    "product": {
+        "featuredProducts": "Featured Products",
+        "allProducts": "All Products",
+        "price": "Price",
+        "addToCart": "Add to Cart",
+        "viewDetails": "View Details",
+        "outOfStock": "Out of Stock",
+        "inStock": "In Stock"
+    },
+    "categories": {
+        "all": "All",
+        "electronics": "Electronics",
+        "clothing": "Clothing",
+        "books": "Books",
+        "home": "Home & Garden",
+        "sports": "Sports"
+    },
+    "cart": {
+        "title": "Shopping Cart",
+        "empty": "Your cart is empty",
+        "items": "items",
+        "total": "Total",
+        "checkout": "Checkout",
+        "remove": "Remove",
+        "quantity": "Quantity"
+    },
+    "messages": {
+        "loading": "Loading products...",
+        "error": "Failed to fetch products",
+        "noProducts": "No products available. Please come back soon!",
+        "welcome": "Welcome to OurFakeStore"
+    },
+    "common": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "close": "Close",
+        "next": "Next",
+        "previous": "Previous",
+        "more": "More"
+    }
+}

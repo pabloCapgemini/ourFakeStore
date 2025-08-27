@@ -7,9 +7,9 @@ Make the home page look better, we like a professional looking e-commerce site w
 
 ## Context Creation Prompts in Order
 - Please create a new folder in our pensieve for this feature.
-- Ask me yes/no questions so we can create a brainstorming file related to this feature, remember only yes/no questions.
+- Ask me yes/no questions so we can create a brainstorming file related to this feature, remember only yes/no questions.  Ask me one question at a time, wait for my response before the next question.
 - Summarize our yes/no question session into a new file called brainstorm-session.md in our pensieve. 
-- Create an assets folder in our project where we can put some examples of e-commerce sites and features we may like.
+- Create an assets folder in our feature folder in the pensieve where we can put some examples of e-commerce sites and features we may like.
 - Please create a plan based on our brainstorming file, our Electron application code & architecture, and the examples in our assets folder. This plan should consist of small stories, give me one sentence per story of incremental progress we can make on this feature. Feel free to ask me any questions related to the increments. Everything needs to be testable, something we can point at that is reasonable progress and that we can use to get feedback from our product stakeholders.
 - Create a table in our plan with your suggested progression of these small stories (I call them increments sometimes). We'll use this table later to track progress.
 - Add visual examples from our assets folder to our plan file.

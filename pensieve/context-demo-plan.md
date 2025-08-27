@@ -6,16 +6,28 @@
 Make the home page look better, we like a professional looking e-commerce site with regular features users would expect.
 
 ## Context Creation Prompts in Order
-- Please create a new folder in our pensieve for this feature.
-- Ask me yes/no questions so we can create a brainstorming file related to this feature, remember only yes/no questions.  Ask me one question at a time, wait for my response before the next question.
-- Summarize our yes/no question session into a new file called brainstorm-session.md in our pensieve. 
-- Create an assets folder in our feature folder in the pensieve where we can put some examples of e-commerce sites and features we may like.
-- Please create a plan based on our brainstorming file, our Electron application code & architecture, and the examples in our assets folder. This plan should consist of small stories, give me one sentence per story of incremental progress we can make on this feature. Feel free to ask me any questions related to the increments. Everything needs to be testable, something we can point at that is reasonable progress and that we can use to get feedback from our product stakeholders.
-- Create a table in our plan with your suggested progression of these small stories (I call them increments sometimes). We'll use this table later to track progress.
-- Add visual examples from our assets folder to our plan file.
-- For each story in our plan file, please create a separate file for that story and add it to our feature folder. In these story files, I'd like you to add a set of tests that we'll implement, one at a time (TDD-style as per our copilot-instructions). Remember they need to be small focused tests that make progress on our story. Later, I'll ask you to start working on our feature one story, one test at a time.
-- Put these tests in a table so we can also keep track of them as we work through them.
-- Review our completed context files and discuss how they'll help future developers working on similar features.
+
+### Start
+- Hi - do you have our workflow instructions in your context?
+- Are you able to package the application and run all tests with out my approval?
+
+### Setup
+- We're going to work on a new feature for this project.  We'll be doing some planning work first, no coding.  I'll give you a small description and name for this feature for your context.  After you read that pls wait for my instructions on what do do next.
+
+### Instructions to generate Planning Context
+1. Please create a new folder in our pensieve for this feature.
+2. Ask me yes/no questions so we can create a brainstorming file related to this feature, remember only yes/no questions.  Ask me one question at a time, wait for my response before the next question.
+3. Summarize our yes/no question session into a new file called brainstorm-session.md in our pensieve. 
+4. Create an assets folder in our feature folder in the pensieve where we can put some examples of e-commerce sites and features we may like.
+5. Please create a plan based on our brainstorming file, our Electron application code & architecture, and the examples in our assets folder. This plan should consist of small stories, give me one sentence per story of incremental progress we can make on this feature. Feel free to ask me any questions related to the increments. Everything needs to be testable, something we can point at that is reasonable progress and that we can use to get feedback from our product stakeholders.
+6. Create a table in our plan with your suggested progression of these small stories (I call them increments sometimes). We'll use this table later to track progress.
+7. Add visual examples from our assets folder to our plan file.
+8. For each story in our plan file, please create a separate file for that story and add it to our feature folder. In these story files, I'd like you to add a set of tests that we'll implement, one at a time (TDD-style as per our copilot-instructions). Remember they need to be small focused tests that make progress on our story. Later, I'll ask you to start working on our feature one story, one test at a time.
+9. Put these tests in a table so we can also keep track of them as we work through them.
+10. Review our completed context files and discuss how they'll help future developers working on similar features.
+
+### Execution
+- Let's start on the first test on Story-1
 
 ## Notes
 - Remember we started to migrate to React from plain vanilla JS/DOM - how do you recommend we proceed?

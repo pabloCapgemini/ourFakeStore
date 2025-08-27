@@ -19,7 +19,7 @@ Following TDD approach, we'll implement these tests one at a time:
 | 1.5.4 | Mock empty product response (0 products) maintains existing | ✅ Complete | Empty state test (already works) - PASSING |
 | 1.5.5 | Mock API error response maintains existing | ✅ Complete | Error state test (already works) - PASSING |
 | 1.5.6 | All existing Playwright tests pass with mock adapter | ✅ Complete | E2E compatibility - PASSING |
-| 1.5.7 | Contract test: Verify real API structure matches mock data | 🔄 Not Started | API contract validation |
+| 1.5.7 | Contract test: Verify real API structure matches mock data | ✅ Complete | API contract validation - PASSING |
 
 ## Test Details
 
@@ -56,7 +56,11 @@ Following TDD approach, we'll implement these tests one at a time:
 ### Test 1.5.7: Contract test: Verify real API structure matches mock data
 - **Type:** Contract test (Jest)
 - **Purpose:** Ensure real FakeStore API structure hasn't changed vs our mock data
-- **Implementation:** Fetch real API, compare structure/types with productsData.ts schema
+- **Implementation:** ✅ Created `jest-tests/contract/ApiContract.test.ts` with comprehensive real API validation:
+  - Validates `/products` endpoint structure and data types
+  - Checks known products exist (Fjallraven backpack, DANVOUY shirt)
+  - Graceful error handling for API downtime
+  - Separate execution via `npm run test:contract`
 
 ## Acceptance Criteria
 - ✅ MockStoreAdapter created using existing productsData.ts
@@ -68,6 +72,7 @@ Following TDD approach, we'll implement these tests one at a time:
 - ✅ Tests are completely independent of external API availability
 - ✅ Contract test validates real API structure matches mock data schema
 - ✅ Contract test alerts us if FakeStore API structure changes
+- ✅ Separate `npm run test:contract` command for on-demand API validation
 
 ## Implementation Notes
 - Leverage existing adapter pattern (StoreAdapter, EmptyStoreAdapter, ErrorStoreAdapter)

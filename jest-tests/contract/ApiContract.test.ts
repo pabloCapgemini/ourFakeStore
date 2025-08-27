@@ -12,22 +12,22 @@ describe('FakeStore API Contract Tests - Story 1.5.7', () => {
             // Then: The structure should match and key products should exist
 
             console.log('🔍 Testing FakeStore API contract...');
-            
+
             try {
                 // Fetch real API data
                 const response = await axios.get('https://fakestoreapi.com/products');
                 const realProducts = response.data;
 
                 console.log(`✅ API responded with ${realProducts.length} products`);
-                
+
                 // Validate response structure
                 expect(Array.isArray(realProducts)).toBe(true);
                 expect(realProducts.length).toBeGreaterThan(0);
-                
+
                 // Validate we have the expected number of products (should be ~20)
                 expect(realProducts.length).toBeGreaterThanOrEqual(15);
                 expect(realProducts.length).toBeLessThanOrEqual(25);
-                
+
                 // Check structure of first product matches our schema
                 const firstProduct = realProducts[0];
                 expect(firstProduct).toHaveProperty('id');
@@ -37,11 +37,11 @@ describe('FakeStore API Contract Tests - Story 1.5.7', () => {
                 expect(firstProduct).toHaveProperty('category');
                 expect(firstProduct).toHaveProperty('image');
                 expect(firstProduct).toHaveProperty('rating');
-                
+
                 // Validate rating object structure
                 expect(firstProduct.rating).toHaveProperty('rate');
                 expect(firstProduct.rating).toHaveProperty('count');
-                
+
                 // Type validation
                 expect(typeof firstProduct.id).toBe('number');
                 expect(typeof firstProduct.title).toBe('string');
@@ -51,9 +51,9 @@ describe('FakeStore API Contract Tests - Story 1.5.7', () => {
                 expect(typeof firstProduct.image).toBe('string');
                 expect(typeof firstProduct.rating.rate).toBe('number');
                 expect(typeof firstProduct.rating.count).toBe('number');
-                
+
                 // Validate a few known products exist (from our test data)
-                const fjallravenBackpack = realProducts.find((p: any) => 
+                const fjallravenBackpack = realProducts.find((p: any) =>
                     p.title === 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops'
                 );
                 expect(fjallravenBackpack).toBeDefined();
@@ -61,8 +61,8 @@ describe('FakeStore API Contract Tests - Story 1.5.7', () => {
                     expect(fjallravenBackpack.id).toBe(1);
                     expect(fjallravenBackpack.category).toBe("men's clothing");
                 }
-                
-                const danvouyShirt = realProducts.find((p: any) => 
+
+                const danvouyShirt = realProducts.find((p: any) =>
                     p.title === 'DANVOUY Womens T Shirt Casual Cotton Short'
                 );
                 expect(danvouyShirt).toBeDefined();
@@ -70,19 +70,19 @@ describe('FakeStore API Contract Tests - Story 1.5.7', () => {
                     expect(danvouyShirt.id).toBe(20);
                     expect(danvouyShirt.category).toBe("women's clothing");
                 }
-                
+
                 console.log('✅ Contract test passed - API structure matches mock data');
-                
+
             } catch (error) {
                 console.error('❌ Contract test failed:', error.message);
-                
+
                 if (error.code === 'ENOTFOUND' || error.code === 'ECONNREFUSED') {
                     console.log('🚨 FakeStore API appears to be down - this is expected occasionally');
                     console.log('📝 This test failure does not block development');
                     // Still fail the test but with context
                     throw new Error(`FakeStore API unavailable: ${error.message}`);
                 }
-                
+
                 throw error;
             }
         }, 10000); // 10 second timeout for API calls

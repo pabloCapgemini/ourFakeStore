@@ -13,7 +13,7 @@
     "test": "playwright test storeUX.spec.ts",
     "test:components": "jest",
     "test:all": "npm run test:components && npm run test",
-    "test:all:pretty": "node scripts/test-all.js",
+    "test:all-pretty": "node scripts/test-all.js",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },

@@ -102,7 +102,8 @@ describe('Header Component', () => {
         it('collapsible content has proper Bootstrap classes', () => {
             render(<Header />);
             const collapseContent = screen.getByTestId('navbar-collapse');
-            expect(collapseContent).toHaveClass('collapse', 'navbar-collapse');
+            expect(collapseContent).toHaveClass('collapse');
+            expect(collapseContent).toHaveClass('navbar-collapse');
         });
     });
 
@@ -112,7 +113,8 @@ describe('Header Component', () => {
             // Expected: Component looks professional with proper spacing
             render(<Header />);
             const headerElement = screen.getByRole('banner');
-            expect(headerElement).toHaveClass('navbar-dark', 'bg-dark');
+            expect(headerElement).toHaveClass('navbar-dark');
+            expect(headerElement).toHaveClass('bg-dark');
         });
 
         it('header has proper padding and spacing', () => {
@@ -131,14 +133,79 @@ describe('Header Component', () => {
     describe('Test 2.5: Header Styling Does Not Break Layout', () => {
         it('should not interfere with overall layout structure', () => {
             render(<Header />);
-            
+
             // Verify header element exists and is accessible
             const headerElement = screen.getByRole('banner');
             expect(headerElement.tagName).toBe('HEADER');
-            
+
             // Verify proper Bootstrap navbar structure
             expect(headerElement.className).toContain('navbar');
             expect(headerElement.className).toContain('navbar-expand-lg');
+        });
+    });
+});
+
+describe('Header Component - Story 3: Search Bar UI Scaffolding', () => {
+    describe('Test 3.1: Search Input Element Exists', () => {
+        it('should contain a search input field', () => {
+            render(<Header />);
+            const searchInput = screen.getByRole('textbox');
+            expect(searchInput).toBeTruthy();
+            expect(searchInput.getAttribute('type')).toBe('text');
+        });
+    });
+
+    describe('Test 3.2: Search Input Has Placeholder Text', () => {
+        it('should have placeholder text "Search products..."', () => {
+            render(<Header />);
+            const searchInput = screen.getByPlaceholderText('Search products...');
+            expect(searchInput).toBeTruthy();
+        });
+    });
+
+    describe('Test 3.3: Search Input Has Bootstrap Styling', () => {
+        it('should have Bootstrap form-control class', () => {
+            render(<Header />);
+            const searchInput = screen.getByRole('textbox');
+            expect(searchInput.className).toContain('form-control');
+        });
+    });
+
+    describe('Test 3.4: Search Input Is Non-Functional', () => {
+        it('should accept text input but not trigger search functionality', () => {
+            render(<Header />);
+            const searchInput = screen.getByRole('textbox');
+
+            // Should be able to type in the input (not disabled)
+            expect(searchInput.hasAttribute('disabled')).toBe(false);
+
+            // Should not have any event handlers (non-functional scaffolding)
+            expect(searchInput.getAttribute('onchange')).toBeNull();
+            expect(searchInput.getAttribute('oninput')).toBeNull();
+            expect(searchInput.getAttribute('onkeydown')).toBeNull();
+        });
+    });
+
+    describe('Test 3.5: Search Input Has Search Icon', () => {
+        it('should display a search icon near the input', () => {
+            render(<Header />);
+            // Look for search icon (could be Bootstrap icon, emoji, or text)
+            const searchIcon = screen.getByText('🔍') || screen.getByLabelText(/search/i);
+            expect(searchIcon).toBeTruthy();
+        });
+    });
+
+    describe('Test 3.6: Search Layout Is Responsive', () => {
+        it('should have responsive input-group structure', () => {
+            const { container } = render(<Header />);
+
+            // Check for Bootstrap input-group class for responsive design
+            const inputGroup = container.querySelector('.input-group');
+            expect(inputGroup).toBeTruthy();
+
+            // Check for responsive positioning (ms-auto class)
+            const searchContainer = container.querySelector('.d-flex.ms-auto');
+            expect(searchContainer).toBeTruthy();
         });
     });
 });

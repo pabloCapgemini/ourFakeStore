@@ -23,6 +23,18 @@ export const Header: React.FC<HeaderProps> = () => {
                 <nav role="navigation">
                     {/* Basic navigation structure */}
                 </nav>
+
+                {/* Search Bar UI Scaffolding */}
+                <div className="d-flex ms-auto">
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Search products..."
+                        />
+                        <span className="input-group-text">🔍</span>
+                    </div>
+                </div>
             </div>
         </header>
     );

@@ -36,16 +36,19 @@ export const ProductList: React.FC<ProductListProps> = ({ products, isLoading, e
     }
 
     return (
-        <ul id="product-list" className="list-group">
+        <div className="row">
             {products.map((product) => (
-                <li key={product.id} className="list-group-item d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 className="mb-1">{product.title}</h6>
-                        <small className="text-muted">{product.category}</small>
+                <div key={product.id} className="col-md-4 mb-4">
+                    <div data-testid="product-card" className="card h-100">
+                        <img src={product.image} alt={product.title} className="card-img-top" style={{height: '200px', objectFit: 'cover'}} />
+                        <div className="card-body">
+                            <h5 className="card-title">{product.title}</h5>
+                            <p className="card-text">{product.category}</p>
+                            <p className="card-text text-primary fw-bold">${product.price}</p>
+                        </div>
                     </div>
-                    <span className="badge bg-primary rounded-pill">${product.price}</span>
-                </li>
+                </div>
             ))}
-        </ul>
+        </div>
     );
 };

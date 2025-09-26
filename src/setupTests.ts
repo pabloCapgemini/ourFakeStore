@@ -4,13 +4,13 @@ import '@testing-library/jest-dom';
 
 // Explicitly declare jest-dom types for TypeScript
 declare global {
-  namespace jest {
-    interface Matchers<R> {
-      toBeInTheDocument(): R;
-      toHaveClass(className: string): R;
-      toHaveAttribute(attr: string, value?: string): R;
-      toHaveTextContent(text: string): R;
-      toContainElement(element: HTMLElement | null): R;
+    namespace jest {
+        interface Matchers<R> {
+            toBeInTheDocument(): R;
+            toHaveClass(className: string): R;
+            toHaveAttribute(attr: string, value?: string): R;
+            toHaveTextContent(text: string): R;
+            toContainElement(element: HTMLElement | null): R;
+        }
     }
-  }
 }

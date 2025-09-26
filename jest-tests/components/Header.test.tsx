@@ -28,10 +28,10 @@ describe('Header Component', () => {
             expect(storeName).toBeInTheDocument();
         });
 
-        it('store name has proper heading role', () => {
+        it('store name has proper brand styling', () => {
             render(<Header />);
-            const heading = screen.getByRole('heading', { level: 1 });
-            expect(heading).toHaveTextContent('OurFakeStore');
+            const brandLink = screen.getByRole('link', { name: 'OurFakeStore' });
+            expect(brandLink).toHaveTextContent('OurFakeStore');
         });
     });
 
@@ -49,6 +49,96 @@ describe('Header Component', () => {
             const header = screen.getByRole('banner');
             const nav = screen.getByRole('navigation');
             expect(header).toContainElement(nav);
+        });
+    });
+
+    describe('Test 2.1: Header Has Bootstrap Classes', () => {
+        it('header element has Bootstrap navbar classes', () => {
+            // Test: Header element has Bootstrap navbar classes
+            // Expected: Component contains 'navbar' and related classes
+            render(<Header />);
+            const headerElement = screen.getByRole('banner');
+            expect(headerElement).toHaveClass('navbar');
+        });
+
+        it('header has Bootstrap navbar theme classes', () => {
+            render(<Header />);
+            const headerElement = screen.getByRole('banner');
+            expect(headerElement).toHaveClass('navbar-expand-lg');
+        });
+    });
+
+    describe('Test 2.2: Header Has Proper Brand Styling', () => {
+        it('store name has navbar-brand class', () => {
+            // Test: Brand element has 'navbar-brand' class
+            // Expected: Store name uses Bootstrap navbar-brand styling
+            render(<Header />);
+            const brandElement = screen.getByText('OurFakeStore');
+            expect(brandElement).toHaveClass('navbar-brand');
+        });
+
+        it('brand element is properly structured', () => {
+            render(<Header />);
+            const brandElement = screen.getByText('OurFakeStore');
+            expect(brandElement.tagName.toLowerCase()).toBe('a');
+        });
+    });
+
+    describe('Test 2.3: Header Is Responsive', () => {
+        it('header contains responsive navbar classes', () => {
+            // Test: Header contains responsive classes (navbar-expand-*)
+            // Expected: Component adapts to different screen sizes
+            render(<Header />);
+            const headerElement = screen.getByRole('banner');
+            expect(headerElement).toHaveClass('navbar-expand-lg');
+        });
+
+        it('header has collapsible button for mobile', () => {
+            render(<Header />);
+            const collapseButton = screen.getByRole('button');
+            expect(collapseButton).toHaveAttribute('data-bs-toggle', 'collapse');
+        });
+
+        it('collapsible content has proper Bootstrap classes', () => {
+            render(<Header />);
+            const collapseContent = screen.getByTestId('navbar-collapse');
+            expect(collapseContent).toHaveClass('collapse', 'navbar-collapse');
+        });
+    });
+
+    describe('Test 2.4: Header Has Professional Appearance', () => {
+        it('header has proper background styling', () => {
+            // Test: Header has proper padding and background styling
+            // Expected: Component looks professional with proper spacing
+            render(<Header />);
+            const headerElement = screen.getByRole('banner');
+            expect(headerElement).toHaveClass('navbar-dark', 'bg-dark');
+        });
+
+        it('header has proper padding and spacing', () => {
+            render(<Header />);
+            const headerElement = screen.getByRole('banner');
+            expect(headerElement).toHaveClass('px-3');
+        });
+
+        it('brand link has proper styling', () => {
+            render(<Header />);
+            const brandElement = screen.getByText('OurFakeStore');
+            expect(brandElement).toHaveClass('navbar-brand');
+        });
+    });
+
+    describe('Test 2.5: Header Styling Does Not Break Layout', () => {
+        it('should not interfere with overall layout structure', () => {
+            render(<Header />);
+            
+            // Verify header element exists and is accessible
+            const headerElement = screen.getByRole('banner');
+            expect(headerElement.tagName).toBe('HEADER');
+            
+            // Verify proper Bootstrap navbar structure
+            expect(headerElement.className).toContain('navbar');
+            expect(headerElement.className).toContain('navbar-expand-lg');
         });
     });
 });

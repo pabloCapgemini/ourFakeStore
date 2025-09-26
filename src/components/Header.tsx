@@ -4,11 +4,26 @@ interface HeaderProps { }
 
 export const Header: React.FC<HeaderProps> = () => {
     return (
-        <header role="banner">
-            <h1>OurFakeStore</h1>
-            <nav role="navigation">
-                {/* Basic navigation structure */}
-            </nav>
+        <header role="banner" className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+            <a className="navbar-brand" href="#">OurFakeStore</a>
+
+            <button
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarNav" data-testid="navbar-collapse">
+                <nav role="navigation">
+                    {/* Basic navigation structure */}
+                </nav>
+            </div>
         </header>
     );
 };

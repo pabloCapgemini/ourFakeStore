@@ -12,7 +12,8 @@ module.exports = {
     }],
   },
   testMatch: [
-    '<rootDir>/jest-tests/components/**/*.(test|spec).(ts|tsx)'
+    '<rootDir>/jest-tests/components/**/*.(test|spec).(ts|tsx)',
+    '<rootDir>/jest-tests/integration/**/*.(test|spec).(ts|tsx)'
   ],
   testPathIgnorePatterns: [
     '<rootDir>/tests/storeUX.spec.ts',

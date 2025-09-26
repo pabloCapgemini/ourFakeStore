@@ -34,4 +34,21 @@ describe('Header Component', () => {
             expect(heading).toHaveTextContent('OurFakeStore');
         });
     });
+
+    describe('Test 1.3: Header Contains Navigation Elements', () => {
+        it('contains a nav element', () => {
+            // Test: Header contains a nav element
+            // Expected: nav HTML element exists in the component
+            render(<Header />);
+            const navElement = screen.getByRole('navigation');
+            expect(navElement).toBeInTheDocument();
+        });
+
+        it('nav element is properly structured', () => {
+            render(<Header />);
+            const header = screen.getByRole('banner');
+            const nav = screen.getByRole('navigation');
+            expect(header).toContainElement(nav);
+        });
+    });
 });

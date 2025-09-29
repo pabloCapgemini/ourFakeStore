@@ -14,12 +14,13 @@ if (require('electron-squirrel-startup')) {
 
 let storeWindow: BrowserWindow;
 const createWindow = async (): Promise<void> => {
-  // Create the browser window.
+    // Create the browser window.
   storeWindow = new BrowserWindow({
     height: 600,
-    width: 800,
+    width: 900, // Increased by 100px for better grid visibility
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      webSecurity: false, // Allow loading external images for development
     },
   });
 

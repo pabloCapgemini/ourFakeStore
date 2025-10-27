@@ -1,0 +1,94 @@
+@startuml ChatmodeWorkflow
+!theme plain
+skinparam backgroundColor white
+skinparam roundCorner 15
+skinparam shadowing false
+
+' Define colors
+skinparam actor {
+    BackgroundColor lightgreen
+    BorderColor darkgreen
+}
+skinparam component {
+    BackgroundColor lightblue
+    BorderColor darkblue
+}
+skinparam file {
+    BackgroundColor lavender
+    BorderColor purple
+}
+
+' Actors and Components
+actor "User" as User
+component "Agile Planner" as AP
+component "Brainstormer" as B
+component "Code Architect" as CA
+component "Extreme Programmer" as EP
+component "Clean Coder" as CC
+
+' Files
+file "brainstorm.md" as BF
+file "architect-guidance.md" as AG
+file "story-architect-guidance.md" as SAG
+file "plan.md" as PF
+file "story-name.md files" as SF
+file "refactoring-name.md" as RF
+
+' Main workflow
+User --> AP : "Create new feature"
+
+' Requirements gathering flow
+AP --> B : "Vague requirements?\nGather details"
+B --> BF : "Creates"
+BF --> AP : "Read by"
+
+' Architecture guidance flow
+AP --> CA : "Need architecture\nguidance?"
+CA --> AG : "Creates"
+AG --> AP : "Read by"
+AG --> EP : "Read by"
+
+' Planning flow
+AP --> PF : "Creates master plan"
+AP --> SF : "Creates story breakdowns"
+
+' Implementation flow
+SF --> EP : "Read by"
+EP --> CC : "During Refactor phase"
+CC --> RF : "Creates suggestions"
+RF --> EP : "Read by"
+EP --> SF : "Updates status"
+
+' Review and feedback loops
+PF --> CA : "Review request"
+SF --> CA : "Review request"
+CA --> AG : "Updates"
+CA --> SAG : "May create\nstory-specific guidance"
+SAG --> EP : "Read by"
+
+' Additional interactions
+EP --> CC : "After several tests\ncompleted"
+
+note top of User : Entry point for\nfeature requests
+
+note right of AP : Central orchestrator\nManages pensieve hierarchy\n(0-Now, 1-Next, 2-Later, etc.)
+
+note right of B : Gathers comprehensive\nrequirements through\nstructured questioning
+
+note right of CA : Provides architectural\nguidance and reviews\nfor maintainability
+
+note right of EP : Implements TDD cycles\n(Red-Green-Refactor)\nwith frequent commits
+
+note right of CC : Suggests design\nimprovements during\nrefactoring phases
+
+note bottom of BF : Detailed feature\nrequirements and\nacceptance criteria
+
+note bottom of AG : Architectural\nrecommendations and\nimplementation guidance
+
+note bottom of PF : Master feature plan\nwith story overview\nand status tracking
+
+note bottom of SF : Individual story\nbreakdowns with\ntest/task sequences
+
+note bottom of RF : Code quality\nimprovements and\nrefactoring suggestions
+
+@enduml

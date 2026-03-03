@@ -6,8 +6,8 @@ Establish Winston as the core logging framework and replace basic console loggin
 
 | Task # | Task Name | Type | Status |
 |--------|-----------|------|--------|
-| Task 1 | Install Winston dependency | New Test | In Progress |
-| Task 2 | Create logger configuration module | New Test | Not Started |
+| Task 1 | Install Winston dependency | New Test | Completed |
+| Task 2 | Create logger configuration module | New Test | In Progress |
 | Task 3 | Replace console.log in index.ts | Refactor | Not Started |
 | Task 4 | Replace console.log in renderer.tsx | Refactor | Not Started |
 | Task 5 | Add environment-based log levels | New Test | Not Started |

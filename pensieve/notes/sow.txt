@@ -1,0 +1,183 @@
+Section 1 – Background and Purpose
+1.1 Background
+Under the existing Statement of Work (“SOW”), Supplier has delivered and continues to deliver a broad set of engineering excellence capabilities in support of the APEX platform, including discovery, requirements definition, knowledge base enablement, testing automation, IDE plugins, measurement frameworks, code review processes, and CI/CD automation, delivered using Agile Development as defined in the original SOW.
+During execution of the original SOW, the Parties jointly identified that:
+•	Significant learnings emerged during discovery and early delivery that materially influenced how certain capabilities should be implemented and integrated.
+•	Differences in interpretation regarding feature intent and sequencing highlighted the need for a more cohesive delivery framework.
+•	While individual capabilities were delivered successfully, the absence of a single, integrated end-to-end SDLC/PDLC operating model limited the ability to consistently scale outcomes across teams and programs. By mutual agreement, the Parties piloted an integrated end-to-end SDLC operating model.
+•	The engagement requires updated PDLC gating and governance to support trunk-based and AI agentic delivery, including risk-based readiness criteria, rapid feedback loops, and objective acceptance evidence appropriate to both traditional features and AI Agent artifacts.
+•	The pilot was successful; however, those efforts were not fully operationalized, scaled, or institutionalized across the broader Verizon development ecosystem.
+1.2 Purpose of the Extension
+The purpose of this Extension SOW is to transition the engagement from a primarily feature-driven delivery model to an operating-model-driven engagement, focused on:
+•	A closed-loop, end-to-end SDLC/PDLC workflow.
+•	Continuous prioritization driven by Verizon developer feedback.
+•	Scaled execution across teams and programs.
+•	Improved quality and predictability through test-driven development (TDD) and enhanced test assets.
+•	Clear linkage between delivery execution and business value realization.
+This Extension SOW is intended to supplement, integrate, and build upon the capabilities delivered under the original SOW, without replacing or invalidating any previously accepted Deliverables, except as expressly stated herein.
+This Extension SOW is organized as follows: Section 4 defines the delivery model and feedback loops; Section 5 defines the core deliverables (including AI Agent artifacts); Section 6 defines how business value and acceptance traceability are tracked; and Section 7 defines governance forums, decision rights, and the controls used to operationalize the delivery model.
+2. OBJECTIVES AND GUIDING PRINCIPLES
+2.1 Extension Objectives
+Building upon the objectives and scope defined in the original Statement of Work (SOW), this Extension SOW refines and expands the engagement objectives to reflect execution learnings and the evolution of the APEX platform toward an end-to-end opinionated operating model.
+Supplier shall focus on objectives that:
+•	Shift delivery emphasis from discrete feature completion to end-to-end SDLC/PDLC flow effectiveness, ensuring that individual capabilities defined in the original SOW operate as a cohesive system.
+•	Use the end-to-end process flow as the primary organizing construct for all work, such that prioritization, sequencing, and delivery decisions are driven by their impact on overall flow efficiency, quality, and value realization.
+•	Establish a closed feedback loop in which continuous input from Verizon development teams, test outcomes, and production signals is systematically incorporated into backlog prioritization and delivery decisions.
+•	Enable the end-to-end workflow to operate at scale across multiple teams, applications, and value streams, beyond the initial pilots and point implementations delivered under the original SOW.
+•	Improve delivery predictability and quality through the institutionalization of test-driven development (TDD) and targeted improvement of existing test suites and coverage across Verizon programs.
+2.2 Alignment to the Original SOW
+The Parties acknowledge that the original SOW established a comprehensive set of capabilities delivered using Agile Development and milestone-based execution. This Extension SOW does not negate those capabilities; rather, it:
+•	Integrates them into a unified SDLC/PDLC operating model.
+•	Reorients prioritization from static release planning to continuous, feedback-driven prioritization.
+•	Extends quality and testing capabilities defined in the original SOW to support earlier defect detection, reduced rework, and higher release confidence.
+2.3 Success Criteria
+Success under this Extension SOW shall be measured by:
+•	Demonstrable use of the end-to-end process flow to prioritize and sequence work.
+•	Clear traceability from developer feedback and test signals to delivery decisions.
+•	The ability of the defined operating model to function consistently across teams and programs.
+•	Measurable improvements in quality, flow efficiency, and delivery confidence attributable to TDD adoption and test asset enhancement.
+2.4 Type of Project
+Pursuant to the Agreement, Section 25.2 Movement of Technical Staff, this SOW is identified as follows:
+	Sensitive for Competitive Purposes	Yes _______    No____X____ 
+Pursuant to the Agreement, Section 25. 1(b) Hiring and Tenure, this SOW is identified as follows:
+
+	Right to Hire Project (Strategic) 	Yes _______  No ____X____
+3. DEFINITIONS AND ACRONYMS (SUPPLEMENTAL)
+All capitalized terms used but not defined in this Extension SOW shall have the meanings assigned to them in the original Statement of Work and the Master Agreement with the following exceptions: The definitions set forth below supplement the definitions contained in the original SOW.
+“Continuous Delivery” A software delivery approach in which code changes are built, tested, and prepared for release in a frequent, automated, and repeatable manner, enabling deployments to production or production-like environments at any time based on business readiness, risk, and governance approvals.
+“CI/CD” Continuous Integration and Continuous Deployment/Delivery; a software development practice that automates integration, testing, and deployment steps to enable frequent, reliable releases.
+“Domain-Driven Development (DDD)” A software development approach that centers system design and implementation around core business domains, domain models, and domain language, developed collaboratively by business and technical stakeholders.
+“Test-Driven Development (TDD)” A software development practice in which automated tests are defined and implemented prior to the development or modification of functional code, such that code is written to satisfy predefined test conditions.
+“Behavior-Driven Development (BDD)” An extension of test-driven development that defines system behavior through business-readable scenarios and acceptance criteria, expressed in a structured, natural-language format.
+“Trunk-Based Development (TBD)” A software development practice in which all developers integrate changes frequently (at least daily) into a single shared mainline (“trunk”), using short-lived branches and feature flags as needed to keep the trunk in a releasable state, reduce merge conflicts, and enable continuous integration and continuous delivery.
+4. DELIVERY MODEL
+4.1 Continuous, Feedback-Driven Delivery
+Services under this Extension SOW shall be delivered using a continuous delivery model characterized by:
+•	Persistent, continuously ordered backlogs
+•	Feedback-driven reprioritization based on developer input and quality signals
+•	Incremental releases based on readiness, value, and risk rather than fixed milestones
+•	Trunk-based development as the default delivery approach, with changes integrated frequently into a shared mainline and protected by automated testing, short-lived branches (as needed), and appropriate use of feature flags to maintain a releasable trunk
+4.2 Continuous Learning and Improvement
+Supplier shall ensure that learning from execution, testing, and production is continuously fed back into:
+•	Prioritization decisions
+•	Workflow refinement
+•	Quality and testing strategies
+•	Evolution of delivered outcomes, recognizing that a material portion of the work product may be embodied as AI Agents (e.g., resident automation, decision-support, or workflow-orchestration agents) and related configurations, prompts, policies, test assets, and operational controls, and not solely as end-user application features
+Where deliverables are implemented as AI Agents or agent-based automations, Supplier shall maintain appropriate controls (including versioning, test coverage, monitoring, and rollback/disable mechanisms) such that these deliverables can be safely iterated and released through the same continuous, trunk-based delivery pipeline.
+4.3 Release Readiness, Controls, and Acceptance
+Supplier shall maintain a releasable state for trunk-based deliverables and shall apply risk-based release readiness controls appropriate to the delivered outcome (including AI Agents). The Parties acknowledge that AI agentic development is inherently iterative and is best executed collaboratively; accordingly, the SDLC/PDLC operating model shall be adjusted, as needed, to enable rapid feedback cycles (e.g., frequent demonstrations, prompt/context iteration, and controlled experimentation) while maintaining appropriate governance and quality thresholds.
+•	For each incremental release, Supplier shall define and maintain clear Definitions of Ready and Definitions of Done (or equivalent entry/exit criteria), including required acceptance criteria, test expectations, and documentation/operational readiness as applicable.
+•	Supplier shall implement and operate automated quality gates in the delivery pipeline commensurate with risk, including (as applicable) build validation, automated test execution, static analysis, security checks, and policy/guardrail validation.
+•	Where deliverables include AI Agents, Supplier shall provide release readiness evidence appropriate to the agent, which may include prompt/context version identification, evaluation or test results against agreed scenarios, guardrail behavior verification, and defined fallback/disable mechanisms.
+•	Supplier shall ensure that releases can be reverted, rolled back, or disabled (as applicable) and that operational controls and monitoring are in place prior to promoting changes to production or production-like environments.
+•	Acceptance of delivered outcomes shall be based on objective evidence (e.g., demonstration of behavior against agreed acceptance criteria, test results, and required operational artifacts) and shall not be conditioned solely on completion of fixed milestones.
+4.4 Deliverable Forms (Features, Automations, and AI Agents)
+The Parties acknowledge that deliverables under this Extension SOW may be realized in multiple forms. Supplier shall deliver work product in the form best suited to achieve the intended operating-model outcome, which may include traditional software features as well as resident automations and AI Agents that augment or orchestrate SDLC/PDLC activities.
+•	Software and platform artifacts (e.g., services, pipelines, plugins, scripts, configurations, and test assets) delivered through trunk-based development and CI/CD practices.
+•	AI Agent artifacts (e.g., agent definitions, prompts, context files, tool integrations, policies/guardrails, evaluation suites, and operational controls) maintained under version control and promoted through environments using the same release discipline as other deliverables.
+•	Operational artifacts (e.g., dashboards, alerts, runbooks, support procedures, and training/enablement materials) required to run, monitor, and evolve the delivered outcomes.
+•	Documentation and workflow artifacts (e.g., reference process definitions, templates, and standards) required to institutionalize the end-to-end SDLC/PDLC operating model.
+4.5 Environments, Telemetry, and Feedback Sources
+Supplier shall ensure that delivery and learning loops are supported by appropriate environments, instrumentation, and telemetry. Feedback signals shall be captured and used to inform prioritization, readiness decisions, and continuous improvement across the SDLC/PDLC workflow.
+•	Supplier shall support a minimum set of delivery environments as required to safely iterate and validate changes (e.g., development, test, and production or production-like), consistent with Verizon access and governance requirements.
+•	Supplier shall instrument delivered workflows and components to emit telemetry sufficient to assess flow, quality, and reliability, including pipeline outcomes, test results, defect signals, and runtime observability for operational components (including AI Agents where applicable).
+•	Supplier shall incorporate structured feedback from Verizon developers and stakeholders (e.g., user feedback, office hours, issue intake, and usage signals) into backlog ordering and workflow refinement.
+•	For AI Agent deliverables, Supplier shall capture and review relevant usage and quality signals (e.g., latency, failure modes, policy/guardrail triggers, and human override/fallback usage) to drive safe iteration and continuous improvement.
+•	Telemetry and feedback insights shall be reviewed on an agreed cadence and shall be used to reprioritize work, refine quality gates, and improve the operating model without requiring fixed milestone resets.
+5. DELIVERABLES
+5.1 Core Deliverables
+Supplier shall provide the following Deliverables under this Extension SOW. Deliverables are intended to enable the establishment, scaling, and sustained operation of an end-to-end SDLC/PDLC operating model and shall be delivered in a form suitable for adoption across Verizon development teams and programs.
+5.1.1 Scaled End-to-End SDLC/PDLC Operating Model
+•	Documented current-state and target-state end-to-end workflows spanning intake through delivery, release, and learning.
+•	Defined integration points to existing APEX capabilities, including requirements management, testing automation, CI/CD, IDE tooling, and measurement frameworks.
+•	Explicit guidance for scaling the operating model across multiple teams, applications, and programs, including roles, dependencies, and governance touchpoints.
+5.1.2 Continuous Feedback and Prioritization Framework
+•	Defined mechanisms to capture and synthesize developer feedback, tooling usage signals, test and quality data, and delivery outcomes.
+•	A prioritization model linking feedback and signals to backlog ordering, sequencing, and investment decisions, consistent with the end-to-end SDLC/PDLC flow.
+5.1.3 Quality and Test Enablement Framework
+•	Test-Driven Development (TDD) adoption guidelines and recommended practices.
+•	A test quality improvement approach for existing programs, including assessment of current test coverage, identification of gaps and redundancies, and prioritization of improvements.
+•	Integration of test readiness, coverage, and quality signals into delivery governance and release readiness checkpoints.
+5.1.4 Execution Tracking and Reporting Artifacts
+•	Management-level dashboards providing visibility into flow efficiency, quality health, delivery progress, and delivery risk.
+•	End-to-end traceability from feedback and prioritization decisions through delivered outcomes and realized value.
+5.1.5 Context Files for Appropriate Verizon Business Units
+•	Context files will be created as version-controlled Markdown files for the Verizon Consumer Group (VCG), Verizon Business Group (VBG), Verizon Global Solutions (VGS), and Network.
+•	These Markdown context files provide BU-specific grounding for AI Agents by capturing approved terminology, standards, guardrails, operating assumptions, and reference material needed to produce relevant, consistent, and compliant outputs.
+•	By standardizing context inputs, the Parties enable repeatable agent behavior across teams and value streams, reduce ambiguity and rework, and improve traceability of agent outputs to agreed sources.
+•	Context files shall be maintained with the same engineering rigor as other deliverables (e.g., trunk-based development, peer review, and automated checks as applicable), enabling controlled evolution, auditability, and rollback where required.
+•	Each BU context set may include (as applicable) domain vocabulary, decision rules, quality criteria, workflow conventions, examples, do/don’t guidance, and links/placeholders to authoritative Verizon artifacts used by retrieval and agent workflows.
+•	At runtime, the applicable context files shall be selected and supplied to the relevant AI Agents/workflows based on the target BU and use case, so that delivered outcomes reflect BU-specific constraints rather than generic guidance.
+5.1.6 SRE and Observability
+Supplier shall establish and operationalize Site Reliability Engineering (SRE) and observability practices for the delivered workflows and operational components (including AI Agents) to enable reliable operation, rapid detection of issues, effective incident response, and continuous improvement based on production signals.
+•	Definition of reliability objectives, including key service level indicators (SLIs) and service level objectives (SLOs) aligned to Verizon priorities (e.g., availability, latency, error rates, throughput, and quality signals).
+•	Instrumentation standards and implementation guidance for metrics, logs, and distributed traces for critical paths across the end-to-end SDLC/PDLC workflow and associated tooling integrations.
+•	Dashboards and alerting guidance, including recommended alert thresholds, notification routing, and a focus on actionable alerts that reflect user and workflow impact.
+•	Incident management artifacts and operating practices, including severity definitions, escalation paths, incident response checklists, and post-incident review (PIR) templates with corrective and preventive action tracking.
+•	Operational readiness requirements for releases, including runbooks, rollback/disable procedures, dependency health checks, and validation steps consistent with trunk-based delivery.
+•	Error budget concepts and governance recommendations to inform prioritization tradeoffs between feature/agent evolution and reliability work.
+•	AI Agent-specific observability guidance, which may include agent health metrics (invocation counts, latency, failure modes), model/prompt/context version telemetry, tool-call success rates, guardrail and policy-trigger events, and human override or fallback utilization.
+•	Continuous improvement loop using production signals to drive backlog reprioritization, workflow refinements, and quality/testing strategy updates.
+5.1.7 Adoption and Embedded Enablement (ACT and PCT)
+Supplier shall enable adoption of the end-to-end SDLC/PDLC operating model and associated automations by combining documented guidance with hands-on enablement. As requested by Verizon, this adoption approach may include the use of embedded Capgemini resources operating within Verizon ACT and PCT teams to accelerate rollout, coach teams in-context, and reduce time-to-value.
+•	Adoption plan and rollout approach, including target team selection, onboarding steps, adoption milestones (as guidance), and success measures tied to flow, quality, and reliability outcomes.
+•	Embedded enablement model: where requested and approved by Verizon, Capgemini resources may be embedded within Verizon ACT and PCT teams to provide day-to-day coaching, pairing, backlog shaping support, and implementation assistance for agreed operating-model elements and AI Agent workflows.
+•	Training and knowledge transfer assets, which may include role-based onboarding materials, job aids, quick reference guides, and recorded walkthroughs for key workflows and tools.
+•	Office hours and community-of-practice support to answer questions, gather feedback, and continuously refine the operating model, context files, and quality/observability practices based on team experience.
+•	Change enablement materials (as applicable), including communications templates, stakeholder briefings, and adoption readiness checklists to support consistent rollout across BUs and value streams.
+•	Transition-to-BAU approach, including defined handoffs to Verizon owners, documentation of operational responsibilities, and a plan to reduce embedded support over time as ACT and PCT teams achieve self-sufficiency.
+5.2 Flexible and Evolving Artifacts
+The Parties acknowledge that certain artifacts produced under this Extension SOW may evolve as learnings are incorporated and the operating model matures. Such artifacts may include, but are not limited to, workflow refinements, metrics definitions, and prioritization heuristics. Updates to these artifacts shall not require a formal Change Request, provided that the overall scope, intent, and objectives of this Extension SOW remain unchanged.
+6. BUSINESS VALUE TRACKING AND ACCEPTANCE TRACEABILITY
+6.1 Business Value as a Process
+•	Value hypotheses are defined at work intake.
+•	Value assumptions are refined during execution based on developer feedback, quality signals, and delivery outcomes.
+•	Value realization is assessed post-release and used to inform future prioritization and investment decisions.
+6.2 Business Value as a Deliverable
+•	Executive-level value scorecards summarizing realized and expected benefits.
+•	Periodic value realization summaries aligned to delivery outcomes and operating-model improvements.
+•	A clear and traceable linkage between investment areas, prioritized work, delivery execution, and measured business benefits.
+6.3 Deliverables-to-Governance / Acceptance Traceability
+Deliverable	Primary Governance Forum	Governance Purpose	Acceptance Owner	Acceptance Evidence
+Scaled end-to-end SDLC/PDLC Operating Model
+	Executive Steering; Value Stream Council	Confirm operating model alignment
+	Verizon Executive / Platform Leadership	Approved end-to-end workflows; scaling guidance adopted.
+
+Continuous Feedback & Prioritization Framework	Value Stream Council	Ensure feedback-driven prioritization	Verizon Product / Platform Governance	Evidence of feedback-driven backlog ordering.
+
+Quality & Test Enablement Framework	Architecture/Quality Review; Delivery Governance
+	Enforce quality and readiness	Verizon Engineering / Quality Leadership	TDD adoption; improved test posture.
+
+Execution Tracking & Reporting Artifacts	Delivery Governance; Executive Steering	Provide delivery transparency	Verizon Delivery / Program Leadership	Dashboards reviewed, traceability visible.
+
+Business Value Tracking – Process	Value Stream Council; Executive Steering	Maintain value-driven investment	Verizon Business & Technology Leadership	Value hypotheses defined and refined.
+
+Business Value Tracking – Deliverables	Executive Steering	Confirm realized benefits	Verizon Executive Sponsors	Value scorecards reviewed and acknowledged.
+
+7. GOVERNANCE, PLANNING, AND CHANGE MANAGEMENT
+7.1 Governance Objectives
+The Parties agree to implement governance that enables an operating-model-driven engagement, including effective collaboration, transparent prioritization tied to end-to-end SDLC/PDLC flow, timely resolution of ambiguity in requirements and acceptance criteria, and controlled incorporation of learnings without disrupting delivery predictability. Governance shall be established during the first month of this Extension SOW and shall be refined based on learnings throughout the extension.
+7.2 Governance Structure and Forums
+Governance shall consist of multiple tiers including Executive Steering, Value Stream Governance, Delivery Governance, and Architecture and Quality Review forums, each with clearly defined purposes, decision rights, and outputs.
+7.3 Roles and Decision Rights
+Decision rights shall be explicit and documented, including prioritization authority retained by Verizon, delivery ownership by the Supplier, and acceptance authority consistent with the original SOW.
+7.4 Planning Cadence and Collaboration
+The Parties shall adopt rolling-wave planning, formal sprint planning, and continuous backlog refinement to ensure collaboration, clarity of intent, and readiness of work prior to commitment.
+7.5 Entry and Exit Criteria
+Formal Definitions of Ready and Done shall be applied to ensure work is sufficiently specified before commitment and meets quality and acceptance thresholds prior to release. Entry/exit criteria and acceptance evidence shall be defined and applied in accordance with the release readiness controls set forth in Section 4.3 (Release Readiness, Controls, and Acceptance).
+7.6 Change Management
+Change shall be managed through clarification, reprioritization, or formal change request mechanisms depending on impact to scope, cost, or schedule.
+7.7 Release Readiness and Quality Governance
+Release decisions shall be based on the risk-based readiness criteria, quality gates, and objective acceptance evidence defined in Section 4.3 (Release Readiness, Controls, and Acceptance), informed by telemetry and feedback sources as described in Section 4.5 (Environments, Telemetry, and Feedback Sources), rather than fixed calendar milestones.
+7.8 Metrics and Transparency
+Governance shall include executive-level business value reporting and delivery-level flow, quality, and predictability metrics.
+7.9 Risk and Escalation
+Risks and issues shall be actively managed and escalated through defined governance tiers as required.
+8. VERIZON RESPONSIBILITIES
+Section 6.1 of the original SOW will be amended to include the following:
+8.1 Verizon Furnished Items
+Verizon shall provide Supplier with the following items and support, as required for the performance of Services under this Extension SOW:
+•	A designated Senior System Engineer to serve as a single point of contact (SPOC) for the Capgemini team for technical coordination, environment/access dependency resolution, and timely escalation of blockers.
+•	Designated representatives from the Verizon ACT and PCT teams to provide continuous feedback and collaboration to support scaling of the operating model, including definition, validation, and refinement of guardrails for AI Agent and workflow adoption.
+•	Participation of the Value Stream Council (or equivalent Verizon governance forum) to review and verify productivity and business value enhancements attributable to delivered outcomes, and to provide timely direction on prioritization and acceptance evidence.
+•	Virtual Desktop Infrastructure (VDI) or Citrix images and related access prerequisites for Supplier resources (including resources located in India, as applicable), consistent with Verizon security and access governance.
